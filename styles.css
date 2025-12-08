@@ -1,0 +1,357 @@
+/* 
+  This is our CSS file - it's like a coloring book that tells everything
+  on our webpage what color to be, how big to be, and where to sit!
+  CSS stands for "Cascading Style Sheets" - it's the language that makes
+  web pages look pretty instead of just plain black text on white background.
+*/
+
+/* 
+  The * means "everything" - so this rule applies to every single thing
+  on our webpage. We're resetting some default styles to make sure
+  everything looks the same in all browsers (like Chrome, Firefox, Safari).
+*/
+* {
+  margin: 0;
+  /* 
+    Margin is like the space around a box. Setting it to 0 means
+    "Don't put any extra space around anything!" This makes sure
+    our page starts at the very edge of the screen.
+  */
+  padding: 0;
+  /* 
+    Padding is like the space inside a box, between the edge and the content.
+    Setting it to 0 means "Don't put any extra space inside anything!"
+  */
+  box-sizing: border-box;
+  /* 
+    This is a bit tricky, but it makes sizing things easier.
+    It means when we say something is 100 pixels wide, it INCLUDES
+    the border and padding, not just the content inside.
+    Like if you have a box and you say it's 10 inches, the box itself
+    is 10 inches including the walls, not 10 inches plus the walls!
+  */
+}
+
+/* 
+  This styles the <body> tag, which is the main container for everything.
+  Think of it like painting the walls of a room!
+*/
+body {
+  font-family: Arial, sans-serif;
+  /* 
+    This tells the computer what font (style of letters) to use.
+    Arial is a simple, easy-to-read font. If Arial isn't available,
+    it will use any "sans-serif" font (sans-serif means no little
+    decorative lines on the letters).
+  */
+  background-color: #f5f5f5;
+  /* 
+    This is a very light gray color for the background.
+    In grayscale, we only use shades of gray, black, and white.
+    #f5f5f5 is like a very light gray - almost white but not quite!
+    The # means it's a color code (like a secret password for colors).
+  */
+  display: flex;
+  /* 
+    Display: flex is like telling all the children of body
+    "Hey, line up nicely in a row or column!" It makes layout easier.
+  */
+  justify-content: center;
+  /* 
+    This centers things horizontally (left to right).
+    Like putting something in the middle of a table!
+  */
+  align-items: center;
+  /* 
+    This centers things vertically (up and down).
+    Like putting something in the middle of a tall shelf!
+  */
+  min-height: 100vh;
+  /* 
+    min-height means "at least this tall".
+    100vh means "100% of the viewport height" - viewport is just
+    a fancy word for "the part of the screen you can see".
+    So this makes sure our body is at least as tall as the screen!
+  */
+  color: #333;
+  /* 
+    This is a dark gray color for text. #333 is like a charcoal gray.
+    We're using grayscale, so no bright colors - just shades of gray!
+  */
+}
+
+/* 
+  This styles our city selector dropdown that goes in the upper left corner.
+  Think of it like styling a menu at a restaurant!
+*/
+.city-selector {
+  position: absolute;
+  /* 
+    Position: absolute means "put this exactly where I tell you,
+    don't let other things push you around!" It's like putting
+    a sticker on a wall - it stays exactly where you put it.
+  */
+  top: 20px;
+  /* 
+    This puts it 20 pixels from the top of the screen.
+    Pixels are tiny dots on your screen - 20 pixels is about
+    the width of your pinky finger nail on most screens!
+  */
+  left: 20px;
+  /* 
+    This puts it 20 pixels from the left side of the screen.
+    Together with top: 20px, this puts it in the upper left corner!
+  */
+  z-index: 1000;
+  /* 
+    z-index is like layers in a cake. Higher numbers are on top.
+    1000 is a big number, so this will be on top of other things.
+    It's like saying "I'm important, put me on the top layer!"
+  */
+}
+
+/* 
+  This styles the label (the text that says "Select Capital City:")
+*/
+.city-selector label {
+  display: block;
+  /* 
+    Display: block means "take up the whole width of your container
+    and start on a new line." Like a paragraph that takes up the whole line!
+  */
+  margin-bottom: 8px;
+  /* 
+    This puts 8 pixels of space below the label.
+    Like putting a small gap between the label and the input box!
+  */
+  font-weight: bold;
+  /* 
+    This makes the text bold (thicker and darker).
+    Like writing with a marker instead of a pencil!
+  */
+  color: #222;
+  /* 
+    A very dark gray, almost black, for the label text.
+    We want it to stand out so people know what the dropdown is for!
+  */
+}
+
+/* 
+  This styles our input box where users type to search for cities.
+*/
+.city-input {
+  width: 300px;
+  /* 
+    This makes the input box 300 pixels wide.
+    That's about the width of 3-4 fingers on most screens!
+  */
+  padding: 10px;
+  /* 
+    This puts 10 pixels of space inside the box, around the text.
+    Like putting padding inside a picture frame so the picture
+    doesn't touch the edges!
+  */
+  font-size: 16px;
+  /* 
+    This makes the text 16 pixels tall. That's a comfortable
+    reading size - not too big, not too small!
+  */
+  border: 2px solid #666;
+  /* 
+    This gives the box a border (the edge around it).
+    2px means 2 pixels thick, and #666 is a medium gray color.
+    Like drawing a gray line around the box!
+  */
+  border-radius: 4px;
+  /* 
+    This rounds the corners of the box slightly.
+    Instead of sharp corners like a square, it has slightly
+    rounded corners like a rounded square!
+  */
+  background-color: #fff;
+  /* 
+    White background for the input box.
+    This makes it stand out from the light gray page background!
+  */
+  color: #000;
+  /* 
+    Black text color so you can see what you're typing!
+  */
+}
+
+/* 
+  When you click on the input box (it's "focused"), we change the border color.
+  This is like highlighting something with a yellow marker!
+*/
+.city-input:focus {
+  outline: none;
+  /* 
+    Outline is a line that browsers draw around focused elements.
+    We turn it off because we want to use our own border color instead!
+  */
+  border-color: #333;
+  /* 
+    When focused, the border becomes a darker gray (#333).
+    This helps users see which box they're typing in!
+  */
+}
+
+/* 
+  This styles the dropdown list that appears when you click the input.
+  It starts hidden and JavaScript will show it when needed!
+*/
+.city-list {
+  position: absolute;
+  /* 
+    Position: absolute so it appears right below the input box,
+    not pushed around by other elements!
+  */
+  top: 100%;
+  /* 
+    This means "start right below the input box" (100% means
+    "all the way at the bottom of the element above me").
+  */
+  left: 0;
+  /* 
+    Align it with the left edge of the input box above it.
+  */
+  width: 300px;
+  /* 
+    Make it the same width as the input box so they line up nicely!
+  */
+  max-height: 300px;
+  /* 
+    Don't let it get taller than 300 pixels. If there are lots
+    of cities, it will scroll instead of getting super tall!
+  */
+  overflow-y: auto;
+  /* 
+    If the list is too tall, add a scrollbar so you can scroll
+    through all the cities. Like a window you can look through
+    and scroll to see more!
+  */
+  background-color: #fff;
+  /* 
+    White background so the list stands out!
+  */
+  border: 2px solid #666;
+  /* 
+    A gray border around the list, matching the input box!
+  */
+  border-top: none;
+  /* 
+    No border on top because it connects to the input box above.
+    Like two boxes stacked together - no border between them!
+  */
+  border-radius: 0 0 4px 4px;
+  /* 
+    Only round the bottom corners, not the top (since top connects
+    to the input box which has its own rounded top corners).
+  */
+  display: none;
+  /* 
+    Start hidden! JavaScript will show it when the user clicks
+    or types in the input box.
+  */
+  z-index: 1001;
+  /* 
+    Even higher z-index than the input box, so it appears on top!
+  */
+}
+
+/* 
+  This styles each city option in the dropdown list.
+  Think of it like styling each item in a menu!
+*/
+.city-item {
+  padding: 10px;
+  /* 
+    Space inside each city option so the text doesn't touch the edges!
+  */
+  cursor: pointer;
+  /* 
+    Cursor: pointer means when you hover over it, your mouse
+    turns into a pointing hand (like when you hover over a link).
+    This tells users "Hey, you can click me!"
+  */
+  border-bottom: 1px solid #ddd;
+  /* 
+    A light gray line between each city option.
+    Like lines on notebook paper that separate each row!
+  */
+  color: #333;
+  /* 
+    Dark gray text color so it's easy to read!
+  */
+}
+
+/* 
+  When you hover over a city option (move your mouse over it),
+  we change the background color to show it's selectable!
+*/
+.city-item:hover {
+  background-color: #e0e0e0;
+  /* 
+    A light gray background when you hover.
+    Like highlighting something with a light gray marker!
+  */
+}
+
+/* 
+  When a city option is selected (you're using keyboard to navigate),
+  we make it even darker to show it's the active one!
+*/
+.city-item.active {
+  background-color: #ccc;
+  /* 
+    A medium gray background for the active/selected item.
+    Darker than hover, so you can tell which one is selected!
+  */
+}
+
+/* 
+  This styles the container that holds our clock.
+  Think of it like a picture frame!
+*/
+.clock-container {
+  display: flex;
+  /* 
+    Use flexbox to center the clock nicely!
+  */
+  justify-content: center;
+  /* 
+    Center the clock horizontally (left to right).
+  */
+  align-items: center;
+  /* 
+    Center the clock vertically (up and down).
+  */
+}
+
+/* 
+  This styles the canvas (the drawing area) where we'll draw our clock.
+*/
+#clock-canvas {
+  border: 3px solid #333;
+  /* 
+    A dark gray border around the clock, 3 pixels thick.
+    Like a picture frame around a painting!
+  */
+  border-radius: 50%;
+  /* 
+    border-radius: 50% makes it a perfect circle!
+    Like taking a square and rounding all the corners until it's a circle!
+  */
+  background-color: #fff;
+  /* 
+    White background for the clock face.
+    Like a white piece of paper to draw on!
+  */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  /* 
+    This creates a shadow under the clock to make it look
+    like it's floating above the page a little bit!
+    rgba(0, 0, 0, 0.2) means black color with 20% opacity (slightly see-through).
+  */
+}
+

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<!-- 
+  This is the main page of our world clock application.
+  Think of this like the foundation of a house - it holds everything together!
+  The DOCTYPE tells the computer "Hey, this is an HTML file!"
+-->
+<html lang="en">
+<!-- 
+  The <html> tag is like a big box that contains everything on our webpage.
+  lang="en" means we're using English language.
+-->
+<head>
+  <!-- 
+    The <head> is like the brain of our webpage.
+    It contains information about the page that the user doesn't see,
+    but the computer needs to know (like the title and what styles to use).
+  -->
+  <meta charset="UTF-8">
+  <!-- 
+    This tells the computer what kind of letters and symbols we can use.
+    UTF-8 is like a universal language that includes almost all letters
+    from all languages in the world!
+  -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 
+    This makes sure our webpage looks good on phones, tablets, and computers.
+    It's like telling the webpage "Hey, fit yourself to whatever screen you're on!"
+  -->
+  <title>World Clock</title>
+  <!-- 
+    This is the name that appears in the browser tab.
+    Like a label on a folder!
+  -->
+  <link rel="stylesheet" href="styles.css">
+  <!-- 
+    This connects our CSS file (which makes things look pretty)
+    to our HTML file. It's like saying "Hey, use these colors and styles!"
+  -->
+</head>
+<body>
+  <!-- 
+    The <body> is like the main room of our house.
+    Everything the user sees goes inside here!
+  -->
+  
+  <!-- 
+    This is our dropdown menu for selecting cities.
+    It's positioned in the upper left corner like the instructions say.
+  -->
+  <div class="city-selector">
+    <!-- 
+      This div is like a container box that holds our dropdown menu.
+      We give it a class name "city-selector" so we can style it with CSS.
+    -->
+    <label for="city-dropdown">Select Capital City:</label>
+    <!-- 
+      A label is like a sign that says "This is what this thing is for!"
+      The "for" connects it to our dropdown below.
+    -->
+    <input 
+      type="text" 
+      id="city-dropdown" 
+      class="city-input"
+      placeholder="Type or select a capital city..."
+      autocomplete="off"
+    >
+    <!-- 
+      This is our input box where users can type to search for cities.
+      Think of it like a search box where you type what you're looking for!
+      - type="text" means it's a text box (not a button or checkbox)
+      - id="city-dropdown" is like a name tag so we can find it later
+      - placeholder is the gray text that shows before you type anything
+      - autocomplete="off" turns off the browser's automatic suggestions
+    -->
+    <div id="city-list" class="city-list"></div>
+    <!-- 
+      This is an invisible box that will show our list of cities
+      when the user clicks on the input box or starts typing.
+      It starts empty, but JavaScript will fill it with cities!
+    -->
+  </div>
+
+  <!-- 
+    This is the container for our clock.
+    Think of it like a picture frame that holds our clock drawing!
+  -->
+  <div class="clock-container">
+    <!-- 
+      A canvas is like a blank piece of paper where we can draw things.
+      We'll use JavaScript to draw our clock face and hands on it!
+      width and height tell it how big to be (in pixels, which are tiny dots on the screen).
+    -->
+    <canvas id="clock-canvas" width="400" height="400"></canvas>
+    <!-- 
+      The id="clock-canvas" is like a name tag so JavaScript can find this canvas
+      and draw on it. It's like saying "Hey JavaScript, draw the clock here!"
+    -->
+  </div>
+
+  <!-- 
+    This connects our JavaScript file to our HTML.
+    We put it at the bottom so the HTML loads first, then the JavaScript runs.
+    It's like reading the instructions before trying to build something!
+  -->
+  <script src="script.js"></script>
+</body>
+</html>
+
