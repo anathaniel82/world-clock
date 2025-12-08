@@ -613,6 +613,26 @@ function drawClock() {
   }
 
   // 
+  // Draw the dynamic fractal pattern if the second hand is between 1 and 59.
+  // The pattern grows from the center when the second hand is at 1,
+  // and reaches the edge when the second hand is at 59!
+  //
+  if (seconds >= 1 && seconds <= 59) {
+    // 
+    // Only draw the fractal pattern when seconds are between 1 and 59.
+    // At second 0 and 60, the pattern is cleared (not drawn)!
+    //
+
+    drawFractalPattern(centerX, centerY, radius, seconds);
+    // 
+    // Call our fractal drawing function!
+    // We pass the center position, the radius of the clock, and the current second.
+    // The function will use the second to calculate how big the pattern should be!
+    //
+
+  }
+
+  // 
   // Now let's draw the hour hand (the short hand that points to the hour).
   //
 
@@ -692,6 +712,256 @@ function drawClock() {
   // 
   // fill() fills the circle with color (makes it solid).
   //
+
+}
+
+// 
+// This function draws a beautiful dynamic fractal pattern on the clock face!
+// A fractal is a pattern that repeats itself in smaller and smaller versions,
+// like a snowflake or a fern leaf. It's like a picture that has the same
+// picture inside it, and that picture has the same picture inside it, forever!
+//
+function drawFractalPattern(centerX, centerY, maxRadius, seconds) {
+  // 
+  // centerX, centerY: The center point of the clock (where the pattern starts).
+  // maxRadius: The maximum radius of the clock (how far the pattern can grow).
+  // seconds: The current second (1-59), which controls how big the pattern is!
+  //
+
+  // 
+  // Calculate how big the pattern should be based on the current second.
+  // When seconds = 1, the pattern is tiny (just starting at the center).
+  // When seconds = 59, the pattern reaches the edge of the clock!
+  //
+  const progress = (seconds - 1) / 58;
+  // 
+  // progress is a number between 0 and 1.
+  // When seconds = 1, progress = 0 (pattern is tiny).
+  // When seconds = 59, progress = 1 (pattern reaches the edge).
+  // We subtract 1 from seconds because we start at second 1, not 0!
+  // We divide by 58 because there are 58 seconds between 1 and 59 (59 - 1 = 58).
+  //
+
+  const currentRadius = maxRadius * progress;
+  // 
+  // Calculate the current radius of the pattern.
+  // When progress = 0, currentRadius = 0 (tiny, at center).
+  // When progress = 1, currentRadius = maxRadius (reaches the edge)!
+  //
+
+  // 
+  // Define our bright neon colors!
+  // These are like super bright, glowing colors that you might see on
+  // neon signs or glow sticks!
+  //
+  const neonColors = [
+    '#FF00FF',  // Bright neon pink (like a hot pink glow stick!)
+    '#00FF00',  // Bright neon green (like a green laser pointer!)
+    '#00FFFF',  // Bright neon teal (like a turquoise glow!)
+    '#FFFF00'   // Bright neon yellow (like a yellow highlighter that glows!)
+  ];
+  // 
+  // These are hexadecimal color codes. Each one represents a bright neon color.
+  // #FF00FF is bright pink, #00FF00 is bright green, etc.
+  //
+
+  // 
+  // Set up the drawing style for our fractal pattern.
+  //
+  ctx.lineWidth = 1.5;
+  // 
+  // Make the lines 1.5 pixels thick - thin enough to see details,
+  // but thick enough to be visible!
+  //
+
+  // 
+  // Draw a mandala-style fractal pattern that grows outward.
+  // A mandala is a circular pattern with repeating shapes, like a flower!
+  // We'll draw multiple layers of the pattern, each one slightly different!
+  //
+  const layers = 12;
+  // 
+  // layers is how many times we repeat the pattern in a circle.
+  // 12 layers means we draw the pattern 12 times, evenly spaced around the circle!
+  // This creates a more detailed, flower-like pattern!
+  //
+
+  // 
+  // Add a rotation effect based on the current second.
+  // This makes the pattern slowly rotate as time passes, like a spinning flower!
+  //
+  const rotation = (seconds * Math.PI * 2) / 60;
+  // 
+  // Calculate a rotation angle based on the current second.
+  // This makes the pattern rotate once per minute (60 seconds = full rotation)!
+  //
+
+  for (let layer = 0; layer < layers; layer++) {
+    // 
+    // This loop draws each layer of the fractal pattern.
+    // layer goes from 0 to 11 (12 layers total).
+    //
+
+    const layerAngle = (layer * Math.PI * 2) / layers + rotation;
+    // 
+    // Calculate the angle for this layer.
+    // We divide the full circle (2 * Math.PI) by the number of layers
+    // to space them evenly around the circle!
+    // We add rotation to make the whole pattern spin slowly!
+    //
+
+    const colorIndex = layer % neonColors.length;
+    // 
+    // Pick a color for this layer by cycling through our neon colors.
+    // % (modulo) gives us the remainder, so it cycles: 0, 1, 2, 3, 0, 1, 2, 3...
+    // This means each layer gets a different color, and they repeat!
+    //
+
+    ctx.strokeStyle = neonColors[colorIndex];
+    // 
+    // Set the stroke color to the selected neon color.
+    // strokeStyle is like choosing which color pen to use!
+    //
+
+    // 
+    // Draw a recursive fractal branch for this layer.
+    // Recursive means the function calls itself to draw smaller versions!
+    //
+    drawFractalBranch(
+      centerX,           // Start at the center X
+      centerY,           // Start at the center Y
+      currentRadius,     // How far the branch can grow
+      layerAngle,        // Which direction this branch points
+      0,                 // Current depth (how many times we've repeated)
+      6                  // Maximum depth (how many times we'll repeat)
+    );
+    // 
+    // This draws one branch of the fractal pattern.
+    // It starts at the center and grows outward in the direction of layerAngle.
+    // The branch will have smaller branches coming off it, and those will have
+    // even smaller branches, creating a beautiful tree-like or fern-like pattern!
+    //
+
+  }
+
+}
+
+// 
+// This function draws a single branch of the fractal pattern.
+// It's called recursively (it calls itself) to create smaller and smaller branches!
+// Think of it like drawing a tree branch, and then drawing smaller branches
+// coming off of it, and even smaller branches coming off those!
+//
+function drawFractalBranch(x, y, length, angle, depth, maxDepth) {
+  // 
+  // x, y: The starting point of this branch (where it begins).
+  // length: How long this branch should be.
+  // angle: Which direction this branch points (in radians).
+  // depth: How many times we've repeated the pattern (starts at 0).
+  // maxDepth: The maximum number of times we'll repeat (stops when depth reaches this).
+  //
+
+  // 
+  // If we've repeated the pattern too many times, stop drawing.
+  // This prevents the function from calling itself forever!
+  //
+  if (depth >= maxDepth || length < 2) {
+    // 
+    // If depth is too high OR the length is too small (less than 2 pixels),
+    // we stop drawing. This is like saying "Okay, this branch is too small,
+    // we can't make it any smaller!"
+    //
+
+    return;
+    // 
+    // return means "stop here, don't do anything else".
+    //
+
+  }
+
+  // 
+  // Calculate where this branch ends.
+  // We use trigonometry (math with triangles) to figure out the end point!
+  //
+  const endX = x + Math.cos(angle) * length;
+  // 
+  // Math.cos(angle) tells us how far to move in the X direction (left-right).
+  // We multiply by length to move the right distance.
+  //
+
+  const endY = y + Math.sin(angle) * length;
+  // 
+  // Math.sin(angle) tells us how far to move in the Y direction (up-down).
+  //
+
+  // 
+  // Draw the main branch line.
+  //
+  ctx.beginPath();
+  // 
+  // Start a new drawing path.
+  //
+
+  ctx.moveTo(x, y);
+  // 
+  // Move to the starting point without drawing.
+  //
+
+  ctx.lineTo(endX, endY);
+  // 
+  // Draw a line to the end point.
+  //
+
+  ctx.stroke();
+  // 
+  // Actually draw the line!
+  //
+
+  // 
+  // Now draw smaller branches coming off this branch!
+  // This is where the "recursive" part happens - we call the function again,
+  // but with smaller length and different angles!
+  //
+  const branchCount = 3;
+  // 
+  // branchCount is how many smaller branches come off this branch.
+  // 3 means we'll draw 3 smaller branches!
+  //
+
+  for (let i = 0; i < branchCount; i++) {
+    // 
+    // This loop draws each smaller branch.
+    //
+
+    const branchAngle = angle + (i - 1) * (Math.PI / 3) + Math.sin(depth) * 0.3;
+    // 
+    // Calculate the angle for this smaller branch.
+    // (i - 1) makes the branches spread out: one to the left, one straight, one to the right.
+    // Math.PI / 3 is 60 degrees, so the branches spread out at 60-degree angles!
+    // We add Math.sin(depth) * 0.3 to create a slight wave effect that varies
+    // with depth, making the pattern more organic and natural-looking!
+    //
+
+    const branchLength = length * (0.55 + Math.sin(depth * 2 + i) * 0.1);
+    // 
+    // Make the smaller branch 55-65% as long as the parent branch.
+    // We use Math.sin() with depth and i to create a predictable variation
+    // that makes each branch slightly different, creating a more natural, organic look!
+    // This makes each generation of branches smaller than the last, but with variation!
+    // Using sin() instead of random() makes the pattern consistent and smooth!
+    //
+
+    drawFractalBranch(endX, endY, branchLength, branchAngle, depth + 1, maxDepth);
+    // 
+    // Call this function again (recursively) to draw the smaller branch!
+    // We start at the end of the current branch (endX, endY).
+    // We use a smaller length (branchLength).
+    // We use a different angle (branchAngle).
+    // We increase depth by 1 (so we know we're one level deeper).
+    // This creates the fractal effect - branches with branches with branches!
+    //
+
+  }
 
 }
 
