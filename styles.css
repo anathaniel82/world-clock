@@ -77,61 +77,85 @@ body {
     This is white color for text. We've inverted the colors!
     Now the text is white so it shows up on the black background!
   */
-}
-
-/* 
-  This styles our city selector dropdown that goes in the upper left corner.
-  Think of it like styling a menu at a restaurant!
-*/
-.city-selector {
-  position: absolute;
+  padding: 20px;
   /* 
-    Position: absolute means "put this exactly where I tell you,
-    don't let other things push you around!" It's like putting
-    a sticker on a wall - it stays exactly where you put it.
-  */
-  top: 20px;
-  /* 
-    This puts it 20 pixels from the top of the screen.
-    Pixels are tiny dots on your screen - 20 pixels is about
-    the width of your pinky finger nail on most screens!
-  */
-  left: 20px;
-  /* 
-    This puts it 20 pixels from the left side of the screen.
-    Together with top: 20px, this puts it in the upper left corner!
-  */
-  z-index: 1000;
-  /* 
-    z-index is like layers in a cake. Higher numbers are on top.
-    1000 is a big number, so this will be on top of other things.
-    It's like saying "I'm important, put me on the top layer!"
+    Add some padding around the edges so the clocks don't touch the screen edges.
   */
 }
 
 /* 
-  This styles the label (the text that says "Select Capital City:")
+  This styles the grid container that holds all 8 clocks.
+  Think of it like a table with 2 rows and 4 columns!
 */
-.city-selector label {
-  display: block;
+.clocks-grid {
+  display: grid;
   /* 
-    Display: block means "take up the whole width of your container
-    and start on a new line." Like a paragraph that takes up the whole line!
+    Display: grid creates a grid layout - like a table with rows and columns!
   */
-  margin-bottom: 8px;
+  grid-template-columns: repeat(4, 1fr);
   /* 
-    This puts 8 pixels of space below the label.
-    Like putting a small gap between the label and the input box!
+    This creates 4 equal columns. repeat(4, 1fr) means "make 4 columns,
+    each taking up 1 fraction of the available space" (so they're all equal width).
   */
-  font-weight: bold;
+  grid-template-rows: repeat(2, auto);
   /* 
-    This makes the text bold (thicker and darker).
-    Like writing with a marker instead of a pencil!
+    This creates 2 rows. auto means each row is as tall as its content needs to be.
   */
-  color: #fff;
+  gap: 30px;
   /* 
-    White color for the label text (inverted from dark gray).
-    We want it to stand out so people know what the dropdown is for!
+    gap adds space between the grid items (between the clocks).
+    30 pixels of space between each clock!
+  */
+  max-width: 1400px;
+  /* 
+    Don't let the grid get wider than 1400 pixels.
+    This keeps the clocks from getting too spread out on very wide screens!
+  */
+  width: 100%;
+  /* 
+    Take up 100% of the available width (up to the max-width).
+  */
+}
+
+/* 
+  This styles each clock wrapper (one clock + its dropdown).
+  Think of it like a picture frame with a label below it!
+*/
+.clock-wrapper {
+  display: flex;
+  /* 
+    Use flexbox to arrange the clock and dropdown vertically.
+  */
+  flex-direction: column;
+  /* 
+    flex-direction: column means stack things vertically (one on top of the other).
+  */
+  align-items: center;
+  /* 
+    Center everything horizontally within this wrapper.
+  */
+  gap: 15px;
+  /* 
+    Add 15 pixels of space between the clock and the dropdown below it.
+  */
+}
+
+/* 
+  This styles the wrapper for each city selector dropdown.
+*/
+.city-selector-wrapper {
+  position: relative;
+  /* 
+    position: relative means this element can contain absolutely positioned children.
+    We need this so the dropdown list can be positioned below the input box!
+  */
+  width: 100%;
+  /* 
+    Make it take up the full width of its container.
+  */
+  max-width: 280px;
+  /* 
+    But don't let it get wider than 280 pixels (slightly smaller than the clock).
   */
 }
 
@@ -139,21 +163,20 @@ body {
   This styles our input box where users type to search for cities.
 */
 .city-input {
-  width: 300px;
+  width: 100%;
   /* 
-    This makes the input box 300 pixels wide.
-    That's about the width of 3-4 fingers on most screens!
+    Make the input box take up 100% of its container's width.
+    This makes it responsive and fit nicely below each clock!
   */
-  padding: 10px;
+  padding: 8px;
   /* 
-    This puts 10 pixels of space inside the box, around the text.
+    This puts 8 pixels of space inside the box, around the text.
     Like putting padding inside a picture frame so the picture
     doesn't touch the edges!
   */
-  font-size: 16px;
+  font-size: 14px;
   /* 
-    This makes the text 16 pixels tall. That's a comfortable
-    reading size - not too big, not too small!
+    This makes the text 14 pixels tall. A bit smaller since we have 8 clocks now!
   */
   border: 2px solid #999;
   /* 
@@ -214,7 +237,7 @@ body {
   /* 
     Align it with the left edge of the input box above it.
   */
-  width: 300px;
+  width: 100%;
   /* 
     Make it the same width as the input box so they line up nicely!
   */
@@ -309,7 +332,7 @@ body {
 }
 
 /* 
-  This styles the container that holds our clock.
+  This styles the container that holds each clock.
   Think of it like a picture frame!
 */
 .clock-container {
@@ -328,9 +351,9 @@ body {
 }
 
 /* 
-  This styles the canvas (the drawing area) where we'll draw our clock.
+  This styles the canvas (the drawing area) where we'll draw each clock.
 */
-#clock-canvas {
+.clock-canvas {
   border: 3px solid #fff;
   /* 
     A white border around the clock, 3 pixels thick (inverted from dark gray).

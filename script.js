@@ -203,57 +203,118 @@ const capitals = [
 // Think of variables like labeled boxes where we store information!
 //
 // 
-// Find Washington D.C. in our list of capitals and set it as the default city.
-// We use the find() function which searches through the list until it finds
-// a city where the name matches "Washington, D.C., United States".
+// We have 8 clocks, so we need to store which city is selected for each clock.
+// We'll use an array (a list) to store 8 cities - one for each clock!
 //
-let selectedCity = capitals.find(city => city.name === "Washington, D.C., United States");
+const NUM_CLOCKS = 8;
 // 
-// This stores which city is currently selected.
-// We start with Washington D.C. as the default city.
-// The "let" keyword means "this is a variable that might change later"!
+// NUM_CLOCKS is a constant (a value that never changes) that tells us we have 8 clocks.
+// We use a constant so if we ever want to change the number of clocks,
+// we only have to change it in one place!
+//
+
+// 
+// Find New Delhi, India in our list of capitals to use as the default city.
+//
+const defaultCity = capitals.find(city => city.name === "New Delhi, India");
+// 
+// This finds New Delhi, India in our list of capitals.
 // find() is like searching through a phone book until you find the name you're looking for!
 //
 
-let filteredCities = [];
 // 
-// This will store the list of cities that match what the user types.
-// It starts empty, but we'll fill it when the user types in the search box!
+// Create an array to store the selected city for each clock.
+// We'll fill it with New Delhi, India for all 8 clocks to start!
+//
+let selectedCities = [];
+// 
+// This array will store which city is selected for each clock.
+// selectedCities[0] is the city for clock 0, selectedCities[1] is for clock 1, etc.
 //
 
-let selectedIndex = -1;
+for (let i = 0; i < NUM_CLOCKS; i++) {
+  // 
+  // This loop runs 8 times (once for each clock).
+  // i goes from 0 to 7 (that's 8 numbers: 0, 1, 2, 3, 4, 5, 6, 7).
+  //
+
+  selectedCities[i] = defaultCity;
+  // 
+  // Set the default city for this clock to New Delhi, India.
+  //
+
+}
+
 // 
-// This keeps track of which city in the dropdown list is currently
-// highlighted (when using keyboard navigation).
-// -1 means "nothing is selected yet"!
+// Create arrays to store information for each clock's dropdown.
+// We need separate arrays for filtered cities and selected indices for each clock!
+//
+let filteredCitiesArrays = [];
+// 
+// This will store filtered city lists for each clock.
+// filteredCitiesArrays[0] is the filtered list for clock 0, etc.
+//
+
+let selectedIndices = [];
+// 
+// This stores which city is highlighted in the dropdown for each clock.
+// selectedIndices[0] is for clock 0, etc.
+//
+
+for (let i = 0; i < NUM_CLOCKS; i++) {
+  // 
+  // Initialize arrays for each clock.
+  //
+
+  filteredCitiesArrays[i] = [];
+  // 
+  // Start with an empty filtered list for each clock.
+  //
+
+  selectedIndices[i] = -1;
+  // 
+  // Start with no city highlighted (-1 means "nothing selected").
+  //
+
+}
+
+// 
+// Now let's get references to all the HTML elements we need.
+// We need to find all 8 canvas elements and all 8 input boxes!
+//
+const canvases = document.querySelectorAll('.clock-canvas');
+// 
+// querySelectorAll finds ALL elements with the class 'clock-canvas'.
+// This gives us an array with all 8 canvas elements!
+//
+
+const cityInputs = document.querySelectorAll('.city-input');
+// 
+// querySelectorAll finds ALL elements with the class 'city-input'.
+// This gives us an array with all 8 input boxes!
 //
 
 // 
-// Now let's get references to the HTML elements we need to work with.
-// Think of this like getting the remote controls for different parts of our webpage!
+// Create an array to store the drawing contexts for each canvas.
+// The drawing context is like a pen and paper for each canvas!
 //
-const cityInput = document.getElementById('city-dropdown');
+const contexts = [];
 // 
-// This finds the input box where users type city names.
-// getElementById is like saying "Hey HTML, find me the element with id='city-dropdown'!"
+// This array will store the drawing context for each canvas.
 //
 
-const cityList = document.getElementById('city-list');
-// 
-// This finds the dropdown list container where we'll show matching cities.
-//
+for (let i = 0; i < NUM_CLOCKS; i++) {
+  // 
+  // Loop through each canvas and get its drawing context.
+  //
 
-const canvas = document.getElementById('clock-canvas');
-// 
-// This finds the canvas (drawing area) where we'll draw our clock.
-//
+  contexts[i] = canvases[i].getContext('2d');
+  // 
+  // Get the drawing context for this canvas.
+  // getContext('2d') gives us a "pen and paper" to draw on this canvas!
+  //
 
-const ctx = canvas.getContext('2d');
-// 
-// This gets the "drawing context" - think of it like getting a pen and paper
-// so we can draw on the canvas! '2d' means we're drawing in 2 dimensions
-// (flat, not 3D like a video game).
-//
+}
 
 // 
 // This function calculates the time in a target timezone based on the system time.
@@ -376,10 +437,32 @@ function getTimeInTimezone(targetTimezone) {
 }
 
 // 
-// This function draws the clock face with roman numerals.
+// This function draws the clock face with roman numerals for a specific clock.
 // Think of it like drawing a clock on a piece of paper!
 //
-function drawClock() {
+function drawClock(clockId) {
+  // 
+  // clockId tells us which clock to draw (0, 1, 2, 3, 4, 5, 6, or 7).
+  //
+
+  // 
+  // Get the canvas and context for this specific clock.
+  //
+  const canvas = canvases[clockId];
+  // 
+  // Get the canvas element for this clock.
+  //
+
+  const ctx = contexts[clockId];
+  // 
+  // Get the drawing context (pen and paper) for this clock.
+  //
+
+  const selectedCity = selectedCities[clockId];
+  // 
+  // Get the selected city for this clock.
+  //
+
   // 
   // First, let's clear the canvas (like erasing a whiteboard).
   // We need to do this every time we draw, otherwise old drawings
@@ -554,61 +637,61 @@ function drawClock() {
     // Actually draw the line!
     //
 
-    // 
-    // Now let's draw the roman numerals for each hour.
-    // Roman numerals are like I, II, III, IV, V, VI, VII, VIII, IX, X, XI, XII.
-    //
+  // 
+  // Now let's draw the regular numbers for each hour.
+  // Regular numbers are like 12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11.
+  //
 
-    const romanNumerals = ['XII', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI'];
-    // 
-    // This is an array (a list) of roman numerals.
-    // XII is at position 0 (for 12 o'clock), I is at position 1 (for 1 o'clock), etc.
-    //
+  const numbers = ['12', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11'];
+  // 
+  // This is an array (a list) of regular numbers.
+  // '12' is at position 0 (for 12 o'clock), '1' is at position 1 (for 1 o'clock), etc.
+  //
 
-    const numeral = romanNumerals[i];
-    // 
-    // Get the roman numeral for this hour (i).
-    //
+  const number = numbers[i];
+  // 
+  // Get the number for this hour (i).
+  //
 
-    ctx.font = 'bold 20px Arial';
-    // 
-    // Set the font for the text. 'bold' means make it thick and dark.
-    // '20px' means 20 pixels tall. 'Arial' is the font name.
-    //
+  ctx.font = 'bold 20px Arial';
+  // 
+  // Set the font for the text. 'bold' means make it thick and dark.
+  // '20px' means 20 pixels tall. 'Arial' is the font name.
+  //
 
-    ctx.fillStyle = '#fff';
-    // 
-    // Set the text color to white (inverted from black for the black background).
-    //
+  ctx.fillStyle = '#fff';
+  // 
+  // Set the text color to white (inverted from black for the black background).
+  //
 
-    ctx.textAlign = 'center';
-    // 
-    // textAlign: 'center' means center the text horizontally.
-    // Like writing text so it's balanced on both sides!
-    //
+  ctx.textAlign = 'center';
+  // 
+  // textAlign: 'center' means center the text horizontally.
+  // Like writing text so it's balanced on both sides!
+  //
 
-    ctx.textBaseline = 'middle';
-    // 
-    // textBaseline: 'middle' means center the text vertically.
-    // Like writing text so it's balanced top and bottom!
-    //
+  ctx.textBaseline = 'middle';
+  // 
+  // textBaseline: 'middle' means center the text vertically.
+  // Like writing text so it's balanced top and bottom!
+  //
 
-    const textX = centerX + Math.cos(angle) * (radius - 30);
-    // 
-    // Calculate where to put the roman numeral text.
-    // radius - 30 means 30 pixels in from the edge (closer than the markers).
-    //
+  const textX = centerX + Math.cos(angle) * (radius - 30);
+  // 
+  // Calculate where to put the number text.
+  // radius - 30 means 30 pixels in from the edge (closer than the markers).
+  //
 
-    const textY = centerY + Math.sin(angle) * (radius - 30);
-    // 
-    // Same for the y position.
-    //
+  const textY = centerY + Math.sin(angle) * (radius - 30);
+  // 
+  // Same for the y position.
+  //
 
-    ctx.fillText(numeral, textX, textY);
-    // 
-    // fillText actually draws the text on the canvas.
-    // It's like writing the roman numeral at that position!
-    //
+  ctx.fillText(number, textX, textY);
+  // 
+  // fillText actually draws the text on the canvas.
+  // It's like writing the number at that position!
+  //
 
   }
 
@@ -627,7 +710,7 @@ function drawClock() {
   // - Math.PI / 2 rotates it so 12 o'clock is at the top.
   //
 
-  drawHand(hourAngle, radius * 0.5, 6, '#fff');
+  drawHand(ctx, canvas, hourAngle, radius * 0.5, 6, '#fff');
   // 
   // drawHand is a function we'll create below that draws a clock hand.
   // hourAngle is the direction to point.
@@ -647,7 +730,7 @@ function drawClock() {
   // + seconds * 0.1 means the minute hand moves a tiny bit for each second.
   //
 
-  drawHand(minuteAngle, radius * 0.7, 4, '#fff');
+  drawHand(ctx, canvas, minuteAngle, radius * 0.7, 4, '#fff');
   // 
   // Draw the minute hand. radius * 0.7 means make it 70% of the radius long.
   // 4 pixels thick, white color (inverted from dark gray for the black background).
@@ -663,7 +746,7 @@ function drawClock() {
   // seconds * 6 means each second is 6 degrees.
   //
 
-  drawHand(secondAngle, radius * 0.8, 2, '#fff');
+  drawHand(ctx, canvas, secondAngle, radius * 0.8, 2, '#fff');
   // 
   // Draw the second hand. radius * 0.8 means make it 80% of the radius long.
   // 2 pixels thick (thin!), white color (inverted from medium gray for the black background).
@@ -699,8 +782,10 @@ function drawClock() {
 // This function draws a clock hand (hour, minute, or second hand).
 // Think of it like drawing an arrow that points in a certain direction!
 //
-function drawHand(angle, length, width, color) {
+function drawHand(ctx, canvas, angle, length, width, color) {
   // 
+  // ctx: the drawing context (pen and paper) for this specific canvas.
+  // canvas: the canvas element we're drawing on.
   // angle: which direction to point (in radians).
   // length: how long the hand should be.
   // width: how thick the hand should be.
@@ -765,8 +850,9 @@ function drawHand(angle, length, width, color) {
 // This function filters (searches through) the cities based on what the user types.
 // Think of it like searching through a phone book for a name!
 //
-function filterCities(searchTerm) {
+function filterCities(clockId, searchTerm) {
   // 
+  // clockId tells us which clock's dropdown we're filtering for.
   // searchTerm is what the user typed in the input box.
   //
 
@@ -776,9 +862,9 @@ function filterCities(searchTerm) {
     // show all cities!
     //
 
-    filteredCities = capitals;
+    filteredCitiesArrays[clockId] = capitals;
     // 
-    // Set filteredCities to the entire list of capitals.
+    // Set filteredCitiesArrays for this clock to the entire list of capitals.
     //
 
   } else {
@@ -793,7 +879,7 @@ function filterCities(searchTerm) {
     // toLowerCase() is like making all letters small: "Hello" becomes "hello".
     //
 
-    filteredCities = capitals.filter(city => {
+    filteredCitiesArrays[clockId] = capitals.filter(city => {
       // 
       // filter() goes through each city in the capitals array
       // and only keeps the ones that match our search.
@@ -809,23 +895,36 @@ function filterCities(searchTerm) {
 
     });
     // 
-    // The result is stored in filteredCities - only the cities that match!
+    // The result is stored in filteredCitiesArrays[clockId] - only the cities that match!
     //
 
   }
 
-  displayCities();
+  displayCities(clockId);
   // 
-  // Now update the dropdown list to show the filtered cities.
+  // Now update the dropdown list to show the filtered cities for this clock.
   //
 
 }
 
 // 
-// This function displays the filtered cities in the dropdown list.
+// This function displays the filtered cities in the dropdown list for a specific clock.
 // Think of it like writing a list of names on a piece of paper!
 //
-function displayCities() {
+function displayCities(clockId) {
+  // 
+  // clockId tells us which clock's dropdown we're displaying cities for.
+  //
+
+  // 
+  // Get the city list element for this specific clock.
+  //
+  const cityList = cityInputs[clockId].parentElement.querySelector('.city-list');
+  // 
+  // Find the city list that belongs to this clock's input box.
+  // parentElement gets the wrapper div, then querySelector finds the city-list inside it.
+  //
+
   // 
   // First, clear the dropdown list (remove any cities that were there before).
   //
@@ -837,7 +936,7 @@ function displayCities() {
   // Like erasing everything on a whiteboard!
   //
 
-  if (filteredCities.length === 0) {
+  if (filteredCitiesArrays[clockId].length === 0) {
     // 
     // If there are no matching cities, show a message.
     //
@@ -875,9 +974,9 @@ function displayCities() {
   // Otherwise, create a list item for each matching city.
   //
 
-  filteredCities.forEach((city, index) => {
+  filteredCitiesArrays[clockId].forEach((city, index) => {
     // 
-    // forEach goes through each city in filteredCities.
+    // forEach goes through each city in filteredCitiesArrays for this clock.
     // city is the current city, index is its position (0, 1, 2, etc.).
     //
 
@@ -902,10 +1001,9 @@ function displayCities() {
       // It's like saying "When someone clicks this, do this thing!"
       //
 
-      selectCity(city);
+      selectCity(clockId, city);
       // 
-      // selectCity is a function we'll create that changes the clock
-      // to show the time in the selected city.
+      // selectCity updates this specific clock to show the time in the selected city.
       //
 
     });
@@ -917,30 +1015,36 @@ function displayCities() {
 
   });
 
-  selectedIndex = -1;
+  selectedIndices[clockId] = -1;
   // 
-  // Reset the selected index (for keyboard navigation).
+  // Reset the selected index for this clock (for keyboard navigation).
   //
 
 }
 
 // 
 // This function is called when a user selects a city (by clicking or keyboard).
-// It updates the clock to show the time in that city!
+// It updates a specific clock to show the time in that city!
 //
-function selectCity(city) {
+function selectCity(clockId, city) {
   // 
+  // clockId tells us which clock to update.
   // city is the city object that was selected (like { name: "London", timezone: "Europe/London" }).
   //
 
-  selectedCity = city;
+  selectedCities[clockId] = city;
   // 
-  // Update our selectedCity variable to remember which city is selected.
+  // Update the selected city for this specific clock.
   //
 
-  cityInput.value = city.name;
+  cityInputs[clockId].value = city.name;
   // 
-  // Update the input box to show the selected city's name.
+  // Update the input box for this clock to show the selected city's name.
+  //
+
+  const cityList = cityInputs[clockId].parentElement.querySelector('.city-list');
+  // 
+  // Get the city list element for this clock.
   //
 
   cityList.style.display = 'none';
@@ -948,20 +1052,26 @@ function selectCity(city) {
   // Hide the dropdown list (since the user has made their selection).
   //
 
-  drawClock();
+  drawClock(clockId);
   // 
-  // Redraw the clock with the new city's time!
+  // Redraw this specific clock with the new city's time!
   //
 
 }
 
 // 
-// This function handles keyboard navigation in the dropdown.
+// This function handles keyboard navigation in the dropdown for a specific clock.
 // It lets users use arrow keys to move up and down, and Enter to select!
 //
-function handleKeyboardNavigation(e) {
+function handleKeyboardNavigation(clockId, e) {
   // 
+  // clockId tells us which clock's dropdown we're navigating.
   // e is the "event" object - it contains information about what key was pressed.
+  //
+
+  const cityList = cityInputs[clockId].parentElement.querySelector('.city-list');
+  // 
+  // Get the city list element for this clock.
   //
 
   if (!cityList.style.display || cityList.style.display === 'none') {
@@ -1011,13 +1121,13 @@ function handleKeyboardNavigation(e) {
       // (like scrolling the page). We want to handle this ourselves!
       //
 
-      selectedIndex = (selectedIndex + 1) % items.length;
+      selectedIndices[clockId] = (selectedIndices[clockId] + 1) % items.length;
       // 
       // Move to the next item. The % (modulo) operator makes it wrap around
       // (so if you're at the last item and press down, you go to the first item).
       //
 
-      updateSelection(items);
+      updateSelection(clockId, items);
       // 
       // Update which item is highlighted.
       //
@@ -1037,13 +1147,13 @@ function handleKeyboardNavigation(e) {
       // Stop the default action.
       //
 
-      selectedIndex = (selectedIndex - 1 + items.length) % items.length;
+      selectedIndices[clockId] = (selectedIndices[clockId] - 1 + items.length) % items.length;
       // 
       // Move to the previous item. The + items.length makes sure
       // we don't get a negative number (so it wraps around properly).
       //
 
-      updateSelection(items);
+      updateSelection(clockId, items);
       // 
       // Update which item is highlighted.
       //
@@ -1060,14 +1170,14 @@ function handleKeyboardNavigation(e) {
       // Stop the default action.
       //
 
-      if (selectedIndex >= 0 && selectedIndex < filteredCities.length) {
+      if (selectedIndices[clockId] >= 0 && selectedIndices[clockId] < filteredCitiesArrays[clockId].length) {
         // 
         // If a city is selected (selectedIndex is valid)...
         //
 
-        selectCity(filteredCities[selectedIndex]);
+        selectCity(clockId, filteredCitiesArrays[clockId][selectedIndices[clockId]]);
         // 
-        // Select that city!
+        // Select that city for this clock!
         //
 
       }
@@ -1093,8 +1203,9 @@ function handleKeyboardNavigation(e) {
 // 
 // This function updates which city item is highlighted (for keyboard navigation).
 //
-function updateSelection(items) {
+function updateSelection(clockId, items) {
   // 
+  // clockId tells us which clock's dropdown we're updating.
   // items is the list of all city items in the dropdown.
   //
 
@@ -1103,9 +1214,9 @@ function updateSelection(items) {
     // Go through each item...
     //
 
-    if (index === selectedIndex) {
+    if (index === selectedIndices[clockId]) {
       // 
-      // If this is the selected item...
+      // If this is the selected item for this clock...
       //
 
       item.classList.add('active');
@@ -1138,130 +1249,210 @@ function updateSelection(items) {
 // 
 // Now let's set up all the event listeners (things that happen when users do stuff).
 // Think of event listeners like setting up alarms - "When this happens, do that!"
+// We need to set up event listeners for all 8 clocks!
 //
 
-// 
-// When the user types in the input box, filter the cities.
-//
-cityInput.addEventListener('input', (e) => {
+for (let i = 0; i < NUM_CLOCKS; i++) {
   // 
-  // 'input' event fires every time the user types or deletes something.
-  // e is the event object.
+  // This loop sets up event listeners for each of the 8 clocks.
+  // i goes from 0 to 7 (that's 8 clocks).
   //
 
-  const searchTerm = e.target.value;
+  const clockId = i;
   // 
-  // e.target is the input box, and .value is what the user typed.
+  // Store the clock ID so we can use it inside the event handlers.
   //
 
-  filterCities(searchTerm);
+  const cityInput = cityInputs[i];
   // 
-  // Filter the cities based on what they typed.
+  // Get the input box for this clock.
   //
 
-  cityList.style.display = 'block';
   // 
-  // Show the dropdown list.
+  // When the user types in the input box, filter the cities.
   //
-
-  selectedIndex = -1;
-  // 
-  // Reset the selected index.
-  //
-
-});
-
-// 
-// When the user clicks on the input box, show the dropdown list.
-//
-cityInput.addEventListener('focus', () => {
-  // 
-  // 'focus' event fires when the user clicks on or tabs to the input box.
-  //
-
-  if (filteredCities.length === 0) {
+  cityInput.addEventListener('input', (e) => {
     // 
-    // If we haven't filtered yet, show all cities.
+    // 'input' event fires every time the user types or deletes something.
+    // e is the event object.
     //
 
-    filterCities('');
+    const searchTerm = e.target.value;
     // 
-    // Filter with empty string shows all cities.
+    // e.target is the input box, and .value is what the user typed.
+    //
+
+    filterCities(clockId, searchTerm);
+    // 
+    // Filter the cities for this specific clock based on what they typed.
+    //
+
+    const cityList = cityInput.parentElement.querySelector('.city-list');
+    // 
+    // Get the city list for this clock.
+    //
+
+    cityList.style.display = 'block';
+    // 
+    // Show the dropdown list.
+    //
+
+    selectedIndices[clockId] = -1;
+    // 
+    // Reset the selected index for this clock.
+    //
+
+  });
+
+  // 
+  // When the user clicks on the input box, show the dropdown list.
+  //
+  cityInput.addEventListener('focus', () => {
+    // 
+    // 'focus' event fires when the user clicks on or tabs to the input box.
+    //
+
+    if (filteredCitiesArrays[clockId].length === 0) {
+      // 
+      // If we haven't filtered yet for this clock, show all cities.
+      //
+
+      filterCities(clockId, '');
+      // 
+      // Filter with empty string shows all cities.
+      //
+
+    }
+
+    const cityList = cityInput.parentElement.querySelector('.city-list');
+    // 
+    // Get the city list for this clock.
+    //
+
+    cityList.style.display = 'block';
+    // 
+    // Show the dropdown list.
+    //
+
+  });
+
+  // 
+  // When the user presses a key, handle keyboard navigation.
+  //
+  cityInput.addEventListener('keydown', (e) => {
+    // 
+    // 'keydown' event fires when a key is pressed down.
+    //
+
+    handleKeyboardNavigation(clockId, e);
+    // 
+    // Call our handleKeyboardNavigation function for this specific clock.
+    //
+
+  });
+
+  // 
+  // Set the input field to show New Delhi, India as the default city.
+  // This makes sure the dropdown shows the correct city name when the page loads!
+  //
+  if (defaultCity) {
+    // 
+    // If we found New Delhi, India in our list (which we should have!)...
+    //
+
+    cityInput.value = defaultCity.name;
+    // 
+    // Set the input box to show "New Delhi, India".
+    // This way users can see which city is currently selected!
     //
 
   }
 
-  cityList.style.display = 'block';
-  // 
-  // Show the dropdown list.
-  //
-
-});
+}
 
 // 
-// When the user clicks outside the input box, hide the dropdown list.
+// When the user clicks outside any input box, hide all dropdown lists.
 //
 document.addEventListener('click', (e) => {
   // 
   // 'click' event on the whole document (the entire page).
   //
 
-  if (!cityInput.contains(e.target) && !cityList.contains(e.target)) {
+  for (let i = 0; i < NUM_CLOCKS; i++) {
     // 
-    // If the click was NOT on the input box AND NOT on the dropdown list...
-    // contains() checks if an element is inside another element.
+    // Check each clock's input and dropdown.
     //
 
-    cityList.style.display = 'none';
+    const cityInput = cityInputs[i];
     // 
-    // Hide the dropdown list.
+    // Get the input box for this clock.
     //
+
+    const cityList = cityInput.parentElement.querySelector('.city-list');
+    // 
+    // Get the dropdown list for this clock.
+    //
+
+    if (!cityInput.contains(e.target) && !cityList.contains(e.target)) {
+      // 
+      // If the click was NOT on this input box AND NOT on this dropdown list...
+      // contains() checks if an element is inside another element.
+      //
+
+      cityList.style.display = 'none';
+      // 
+      // Hide this clock's dropdown list.
+      //
+
+    }
 
   }
 
 });
 
 // 
-// When the user presses a key, handle keyboard navigation.
-//
-cityInput.addEventListener('keydown', handleKeyboardNavigation);
-// 
-// 'keydown' event fires when a key is pressed down.
-// We call our handleKeyboardNavigation function to handle it.
+// Finally, let's start all the clocks!
+// We need to draw them once immediately, then update them every second.
 //
 
 // 
-// Finally, let's start the clock!
-// We need to draw it once immediately, then update it every second.
+// Draw all clocks right away (so they show immediately when the page loads).
 //
-
-// 
-// Set the input field to show Washington D.C. as the default city.
-// This makes sure the dropdown shows the correct city name when the page loads!
-//
-if (selectedCity) {
+for (let i = 0; i < NUM_CLOCKS; i++) {
   // 
-  // If we found Washington D.C. in our list (which we should have!)...
+  // Loop through all 8 clocks and draw each one.
   //
 
-  cityInput.value = selectedCity.name;
+  drawClock(i);
   // 
-  // Set the input box to show "Washington, D.C., United States".
-  // This way users can see which city is currently selected!
+  // Draw this clock right away!
   //
 
 }
 
-drawClock();
 // 
-// Draw the clock right away (so it shows immediately when the page loads).
+// Update all clocks every second.
 //
+setInterval(() => {
+  // 
+  // setInterval runs a function repeatedly.
+  // 1000 means "every 1000 milliseconds" (which is 1 second).
+  //
 
-setInterval(drawClock, 1000);
+  for (let i = 0; i < NUM_CLOCKS; i++) {
+    // 
+    // Loop through all 8 clocks and update each one.
+    //
+
+    drawClock(i);
+    // 
+    // Draw this clock with the current time!
+    //
+
+  }
+
+}, 1000);
 // 
-// setInterval runs a function repeatedly.
-// drawClock is the function to run.
-// 1000 means "every 1000 milliseconds" (which is 1 second).
-// So the clock updates every second to show the current time!
+// So all clocks update every second to show the current time!
 //
 

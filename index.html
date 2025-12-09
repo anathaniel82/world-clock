@@ -44,57 +44,189 @@
   -->
   
   <!-- 
-    This is our dropdown menu for selecting cities.
-    It's positioned in the upper left corner like the instructions say.
+    This is the main container for all 8 clocks.
+    We'll arrange them in a grid: 4 clocks on top, 4 clocks on bottom!
   -->
-  <div class="city-selector">
+  <div class="clocks-grid">
     <!-- 
-      This div is like a container box that holds our dropdown menu.
-      We give it a class name "city-selector" so we can style it with CSS.
+      This div holds all 8 clock containers in a grid layout.
+      Think of it like a table with 2 rows and 4 columns!
     -->
-    <label for="city-dropdown">Select Capital City:</label>
-    <!-- 
-      A label is like a sign that says "This is what this thing is for!"
-      The "for" connects it to our dropdown below.
-    -->
-    <input 
-      type="text" 
-      id="city-dropdown" 
-      class="city-input"
-      placeholder="Type or select a capital city..."
-      autocomplete="off"
-    >
-    <!-- 
-      This is our input box where users can type to search for cities.
-      Think of it like a search box where you type what you're looking for!
-      - type="text" means it's a text box (not a button or checkbox)
-      - id="city-dropdown" is like a name tag so we can find it later
-      - placeholder is the gray text that shows before you type anything
-      - autocomplete="off" turns off the browser's automatic suggestions
-    -->
-    <div id="city-list" class="city-list"></div>
-    <!-- 
-      This is an invisible box that will show our list of cities
-      when the user clicks on the input box or starts typing.
-      It starts empty, but JavaScript will fill it with cities!
-    -->
-  </div>
 
-  <!-- 
-    This is the container for our clock.
-    Think of it like a picture frame that holds our clock drawing!
-  -->
-  <div class="clock-container">
     <!-- 
-      A canvas is like a blank piece of paper where we can draw things.
-      We'll use JavaScript to draw our clock face and hands on it!
-      width and height tell it how big to be (in pixels, which are tiny dots on the screen).
+      Clock 1 - Top row, first position
     -->
-    <canvas id="clock-canvas" width="400" height="400"></canvas>
+    <div class="clock-wrapper">
+      <!-- 
+        Each clock-wrapper contains one clock and its dropdown menu.
+        Think of it like a picture frame with a label below it!
+      -->
+      <div class="clock-container">
+        <!-- 
+          This is the container for one clock face.
+        -->
+        <canvas class="clock-canvas" data-clock-id="0" width="300" height="300"></canvas>
+        <!-- 
+          This canvas will be used to draw one clock.
+          data-clock-id="0" is like a name tag so JavaScript knows which clock this is!
+          We made it smaller (300x300) so 8 clocks can fit on the screen nicely.
+        -->
+      </div>
+      <div class="city-selector-wrapper">
+        <!-- 
+          This wrapper holds the dropdown menu for this specific clock.
+        -->
+        <input 
+          type="text" 
+          class="city-input"
+          data-clock-id="0"
+          placeholder="Select city..."
+          autocomplete="off"
+        >
+        <!-- 
+          This input box lets users select which city's time to show on this clock.
+          data-clock-id="0" connects it to the clock with the same ID!
+        -->
+        <div class="city-list"></div>
+        <!-- 
+          This is the dropdown list that appears when you click the input box.
+        -->
+      </div>
+    </div>
+
     <!-- 
-      The id="clock-canvas" is like a name tag so JavaScript can find this canvas
-      and draw on it. It's like saying "Hey JavaScript, draw the clock here!"
+      Clock 2 - Top row, second position
     -->
+    <div class="clock-wrapper">
+      <div class="clock-container">
+        <canvas class="clock-canvas" data-clock-id="1" width="300" height="300"></canvas>
+      </div>
+      <div class="city-selector-wrapper">
+        <input 
+          type="text" 
+          class="city-input"
+          data-clock-id="1"
+          placeholder="Select city..."
+          autocomplete="off"
+        >
+        <div class="city-list"></div>
+      </div>
+    </div>
+
+    <!-- 
+      Clock 3 - Top row, third position
+    -->
+    <div class="clock-wrapper">
+      <div class="clock-container">
+        <canvas class="clock-canvas" data-clock-id="2" width="300" height="300"></canvas>
+      </div>
+      <div class="city-selector-wrapper">
+        <input 
+          type="text" 
+          class="city-input"
+          data-clock-id="2"
+          placeholder="Select city..."
+          autocomplete="off"
+        >
+        <div class="city-list"></div>
+      </div>
+    </div>
+
+    <!-- 
+      Clock 4 - Top row, fourth position
+    -->
+    <div class="clock-wrapper">
+      <div class="clock-container">
+        <canvas class="clock-canvas" data-clock-id="3" width="300" height="300"></canvas>
+      </div>
+      <div class="city-selector-wrapper">
+        <input 
+          type="text" 
+          class="city-input"
+          data-clock-id="3"
+          placeholder="Select city..."
+          autocomplete="off"
+        >
+        <div class="city-list"></div>
+      </div>
+    </div>
+
+    <!-- 
+      Clock 5 - Bottom row, first position
+    -->
+    <div class="clock-wrapper">
+      <div class="clock-container">
+        <canvas class="clock-canvas" data-clock-id="4" width="300" height="300"></canvas>
+      </div>
+      <div class="city-selector-wrapper">
+        <input 
+          type="text" 
+          class="city-input"
+          data-clock-id="4"
+          placeholder="Select city..."
+          autocomplete="off"
+        >
+        <div class="city-list"></div>
+      </div>
+    </div>
+
+    <!-- 
+      Clock 6 - Bottom row, second position
+    -->
+    <div class="clock-wrapper">
+      <div class="clock-container">
+        <canvas class="clock-canvas" data-clock-id="5" width="300" height="300"></canvas>
+      </div>
+      <div class="city-selector-wrapper">
+        <input 
+          type="text" 
+          class="city-input"
+          data-clock-id="5"
+          placeholder="Select city..."
+          autocomplete="off"
+        >
+        <div class="city-list"></div>
+      </div>
+    </div>
+
+    <!-- 
+      Clock 7 - Bottom row, third position
+    -->
+    <div class="clock-wrapper">
+      <div class="clock-container">
+        <canvas class="clock-canvas" data-clock-id="6" width="300" height="300"></canvas>
+      </div>
+      <div class="city-selector-wrapper">
+        <input 
+          type="text" 
+          class="city-input"
+          data-clock-id="6"
+          placeholder="Select city..."
+          autocomplete="off"
+        >
+        <div class="city-list"></div>
+      </div>
+    </div>
+
+    <!-- 
+      Clock 8 - Bottom row, fourth position
+    -->
+    <div class="clock-wrapper">
+      <div class="clock-container">
+        <canvas class="clock-canvas" data-clock-id="7" width="300" height="300"></canvas>
+      </div>
+      <div class="city-selector-wrapper">
+        <input 
+          type="text" 
+          class="city-input"
+          data-clock-id="7"
+          placeholder="Select city..."
+          autocomplete="off"
+        >
+        <div class="city-list"></div>
+      </div>
+    </div>
+
   </div>
 
   <!-- 
