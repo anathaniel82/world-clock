@@ -220,7 +220,6 @@ const capitals = [
   { name: "Houston, Texas, United States", timezone: "America/Chicago" },
   { name: "Las Vegas, Nevada, United States", timezone: "America/Los_Angeles" },
   { name: "Los Angeles, California, United States", timezone: "America/Los_Angeles" },
-  { name: "Mexico City, Mexico", timezone: "America/Mexico_City" },
   { name: "Miami, Florida, United States", timezone: "America/New_York" },
   { name: "Montreal, Canada", timezone: "America/Toronto" },
   { name: "New York, New York, United States", timezone: "America/New_York" },
@@ -231,83 +230,50 @@ const capitals = [
   { name: "Seattle, Washington, United States", timezone: "America/Los_Angeles" },
   { name: "Toronto, Canada", timezone: "America/Toronto" },
   { name: "Vancouver, Canada", timezone: "America/Vancouver" },
-  { name: "Washington, D.C., United States", timezone: "America/New_York" },
   
   // MAJOR METROPOLITAN CITIES - ASIA
-  { name: "Bangkok, Thailand", timezone: "Asia/Bangkok" },
   { name: "Bangalore, India", timezone: "Asia/Kolkata" },
   { name: "Beijing, China", timezone: "Asia/Shanghai" },
   { name: "Busan, South Korea", timezone: "Asia/Seoul" },
   { name: "Chennai, India", timezone: "Asia/Kolkata" },
   { name: "Chongqing, China", timezone: "Asia/Shanghai" },
-  { name: "Delhi, India", timezone: "Asia/Kolkata" },
   { name: "Dubai, United Arab Emirates", timezone: "Asia/Dubai" },
   { name: "Guangzhou, China", timezone: "Asia/Shanghai" },
   { name: "Hangzhou, China", timezone: "Asia/Shanghai" },
   { name: "Ho Chi Minh City, Vietnam", timezone: "Asia/Ho_Chi_Minh" },
   { name: "Hong Kong, China", timezone: "Asia/Hong_Kong" },
   { name: "Hyderabad, India", timezone: "Asia/Kolkata" },
-  { name: "Jakarta, Indonesia", timezone: "Asia/Jakarta" },
   { name: "Karachi, Pakistan", timezone: "Asia/Karachi" },
   { name: "Kolkata, India", timezone: "Asia/Kolkata" },
-  { name: "Kuala Lumpur, Malaysia", timezone: "Asia/Kuala_Lumpur" },
-  { name: "Manila, Philippines", timezone: "Asia/Manila" },
   { name: "Mumbai, India", timezone: "Asia/Kolkata" },
   { name: "Nagoya, Japan", timezone: "Asia/Tokyo" },
   { name: "Osaka, Japan", timezone: "Asia/Tokyo" },
-  { name: "Seoul, South Korea", timezone: "Asia/Seoul" },
   { name: "Shanghai, China", timezone: "Asia/Shanghai" },
   { name: "Shenzhen, China", timezone: "Asia/Shanghai" },
-  { name: "Singapore, Singapore", timezone: "Asia/Singapore" },
   { name: "Taipei, Taiwan", timezone: "Asia/Taipei" },
-  { name: "Tokyo, Japan", timezone: "Asia/Tokyo" },
   { name: "Yokohama, Japan", timezone: "Asia/Tokyo" },
   
   // MAJOR METROPOLITAN CITIES - EUROPE
-  { name: "Amsterdam, Netherlands", timezone: "Europe/Amsterdam" },
   { name: "Barcelona, Spain", timezone: "Europe/Madrid" },
-  { name: "Berlin, Germany", timezone: "Europe/Berlin" },
-  { name: "Brussels, Belgium", timezone: "Europe/Brussels" },
-  { name: "Copenhagen, Denmark", timezone: "Europe/Copenhagen" },
-  { name: "Dublin, Ireland", timezone: "Europe/Dublin" },
   { name: "Frankfurt, Germany", timezone: "Europe/Berlin" },
   { name: "Hamburg, Germany", timezone: "Europe/Berlin" },
   { name: "Istanbul, Turkey", timezone: "Europe/Istanbul" },
-  { name: "Lisbon, Portugal", timezone: "Europe/Lisbon" },
-  { name: "London, United Kingdom", timezone: "Europe/London" },
-  { name: "Madrid, Spain", timezone: "Europe/Madrid" },
   { name: "Manchester, United Kingdom", timezone: "Europe/London" },
   { name: "Milan, Italy", timezone: "Europe/Rome" },
-  { name: "Moscow, Russia", timezone: "Europe/Moscow" },
   { name: "Munich, Germany", timezone: "Europe/Berlin" },
-  { name: "Paris, France", timezone: "Europe/Paris" },
-  { name: "Prague, Czech Republic", timezone: "Europe/Prague" },
-  { name: "Rome, Italy", timezone: "Europe/Rome" },
-  { name: "Stockholm, Sweden", timezone: "Europe/Stockholm" },
-  { name: "Vienna, Austria", timezone: "Europe/Vienna" },
-  { name: "Warsaw, Poland", timezone: "Europe/Warsaw" },
   { name: "Zurich, Switzerland", timezone: "Europe/Zurich" },
   
   // MAJOR METROPOLITAN CITIES - SOUTH AMERICA
-  { name: "Bogotá, Colombia", timezone: "America/Bogota" },
-  { name: "Brasília, Brazil", timezone: "America/Sao_Paulo" },
-  { name: "Buenos Aires, Argentina", timezone: "America/Argentina/Buenos_Aires" },
-  { name: "Caracas, Venezuela", timezone: "America/Caracas" },
-  { name: "Lima, Peru", timezone: "America/Lima" },
   { name: "Rio de Janeiro, Brazil", timezone: "America/Sao_Paulo" },
   { name: "Santiago, Chile", timezone: "America/Santiago" },
   { name: "São Paulo, Brazil", timezone: "America/Sao_Paulo" },
   
   // MAJOR METROPOLITAN CITIES - AFRICA
-  { name: "Cairo, Egypt", timezone: "Africa/Cairo" },
   { name: "Casablanca, Morocco", timezone: "Africa/Casablanca" },
   { name: "Johannesburg, South Africa", timezone: "Africa/Johannesburg" },
-  { name: "Lagos, Nigeria", timezone: "Africa/Lagos" },
-  { name: "Nairobi, Kenya", timezone: "Africa/Nairobi" },
   
   // ADDITIONAL TIMEZONES TO ENSURE COMPLETE COVERAGE
-  // Pacific Timezones
-  { name: "Anchorage, United States", timezone: "America/Anchorage" },
+  // Pacific Timezones (Anchorage already listed above)
   { name: "Fairbanks, Alaska, United States", timezone: "America/Anchorage" },
   { name: "Juneau, Alaska, United States", timezone: "America/Juneau" },
   { name: "Nome, Alaska, United States", timezone: "America/Nome" },
@@ -339,9 +305,6 @@ const capitals = [
   
   // Additional Asian Cities for Timezone Coverage
   { name: "Almaty, Kazakhstan", timezone: "Asia/Almaty" },
-  { name: "Bishkek, Kyrgyzstan", timezone: "Asia/Bishkek" },
-  { name: "Dushanbe, Tajikistan", timezone: "Asia/Dushanbe" },
-  { name: "Tashkent, Uzbekistan", timezone: "Asia/Tashkent" },
   { name: "Yekaterinburg, Russia", timezone: "Asia/Yekaterinburg" },
   { name: "Novosibirsk, Russia", timezone: "Asia/Novosibirsk" },
   { name: "Krasnoyarsk, Russia", timezone: "Asia/Krasnoyarsk" },
@@ -351,56 +314,20 @@ const capitals = [
   { name: "Magadan, Russia", timezone: "Asia/Magadan" },
   { name: "Kamchatka, Russia", timezone: "Asia/Kamchatka" },
   
-  // Additional European Cities
-  { name: "Athens, Greece", timezone: "Europe/Athens" },
-  { name: "Bucharest, Romania", timezone: "Europe/Bucharest" },
-  { name: "Budapest, Hungary", timezone: "Europe/Budapest" },
-  { name: "Helsinki, Finland", timezone: "Europe/Helsinki" },
-  { name: "Kiev, Ukraine", timezone: "Europe/Kiev" },
-  { name: "Oslo, Norway", timezone: "Europe/Oslo" },
-  { name: "Riga, Latvia", timezone: "Europe/Riga" },
-  { name: "Sofia, Bulgaria", timezone: "Europe/Sofia" },
-  { name: "Tallinn, Estonia", timezone: "Europe/Tallinn" },
-  { name: "Vilnius, Lithuania", timezone: "Europe/Vilnius" },
+  // Additional European Cities (only cities not already in main list)
   
-  // Additional South American Cities
+  // Additional South American Cities (only cities not already in main list)
   { name: "Montevideo, Uruguay", timezone: "America/Montevideo" },
   { name: "Quito, Ecuador", timezone: "America/Guayaquil" },
-  { name: "La Paz, Bolivia", timezone: "America/La_Paz" },
-  { name: "Asunción, Paraguay", timezone: "America/Asuncion" },
   { name: "Georgetown, Guyana", timezone: "America/Guyana" },
   { name: "Paramaribo, Suriname", timezone: "America/Paramaribo" },
   
-  // Additional African Cities
-  { name: "Addis Ababa, Ethiopia", timezone: "Africa/Addis_Ababa" },
-  { name: "Algiers, Algeria", timezone: "Africa/Algiers" },
-  { name: "Dar es Salaam, Tanzania", timezone: "Africa/Dar_es_Salaam" },
-  { name: "Kampala, Uganda", timezone: "Africa/Kampala" },
-  { name: "Khartoum, Sudan", timezone: "Africa/Khartoum" },
-  { name: "Luanda, Angola", timezone: "Africa/Luanda" },
-  { name: "Maputo, Mozambique", timezone: "Africa/Maputo" },
-  { name: "Tunis, Tunisia", timezone: "Africa/Tunis" },
+  // Additional African Cities (only cities not already in main list)
   
-  // Additional Middle Eastern Cities
-  { name: "Abu Dhabi, United Arab Emirates", timezone: "Asia/Dubai" },
-  { name: "Amman, Jordan", timezone: "Asia/Amman" },
-  { name: "Baghdad, Iraq", timezone: "Asia/Baghdad" },
-  { name: "Beirut, Lebanon", timezone: "Asia/Beirut" },
-  { name: "Doha, Qatar", timezone: "Asia/Qatar" },
-  { name: "Jerusalem, Israel", timezone: "Asia/Jerusalem" },
-  { name: "Kuwait City, Kuwait", timezone: "Asia/Kuwait" },
-  { name: "Muscat, Oman", timezone: "Asia/Muscat" },
-  { name: "Riyadh, Saudi Arabia", timezone: "Asia/Riyadh" },
-  { name: "Tehran, Iran", timezone: "Asia/Tehran" },
+  // Additional Middle Eastern Cities (only cities not already in main list)
   
-  // Additional Asian Cities
-  { name: "Colombo, Sri Lanka", timezone: "Asia/Colombo" },
-  { name: "Dhaka, Bangladesh", timezone: "Asia/Dhaka" },
-  { name: "Kathmandu, Nepal", timezone: "Asia/Kathmandu" },
-  { name: "Phnom Penh, Cambodia", timezone: "Asia/Phnom_Penh" },
-  { name: "Vientiane, Laos", timezone: "Asia/Vientiane" },
-  { name: "Yangon, Myanmar", timezone: "Asia/Yangon" },
-  { name: "Ulaanbaatar, Mongolia", timezone: "Asia/Ulaanbaatar" }
+  // Additional Asian Cities (only cities not already in main list)
+  { name: "Yangon, Myanmar", timezone: "Asia/Yangon" }
 ];
 
 // 
