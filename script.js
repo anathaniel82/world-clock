@@ -776,6 +776,95 @@ function drawClock(clockId) {
   // fill() fills the circle with color (makes it solid).
   //
 
+  // 
+  // Now let's draw the military time (24-hour format) in large digital-style numerals.
+  // Hours will be on the left side, minutes on the right side of the clock face!
+  //
+
+  // 
+  // Format the hours and minutes as 2-digit strings (always show 2 digits).
+  // For example, if hours is 5, it becomes "05". If hours is 14, it stays "14".
+  //
+  const hoursString = hours.toString().padStart(2, '0');
+  // 
+  // padStart(2, '0') makes sure the number always has 2 digits.
+  // If hours is 5, padStart adds a "0" at the beginning to make it "05".
+  // If hours is already 14, it stays "14" (no padding needed).
+  //
+
+  const minutesString = minutes.toString().padStart(2, '0');
+  // 
+  // Same thing for minutes - always show 2 digits!
+  //
+
+  // 
+  // Set up the font for digital-style numbers.
+  // We use a monospace font (where all characters are the same width) to look like a digital watch!
+  //
+  ctx.font = 'bold 36px "Courier New", monospace';
+  // 
+  // 'bold' makes the text thick and dark.
+  // '36px' makes it 36 pixels tall - nice and large so it's easy to read!
+  // 'Courier New' is a monospace font that looks like a digital watch display.
+  // If Courier New isn't available, it will use any monospace font.
+  //
+
+  ctx.fillStyle = '#fff';
+  // 
+  // White color for the digital time display (inverted from black for the black background).
+  //
+
+  ctx.textAlign = 'center';
+  // 
+  // Center the text horizontally.
+  //
+
+  ctx.textBaseline = 'middle';
+  // 
+  // Center the text vertically.
+  //
+
+  // 
+  // Calculate positions for hours (left side) and minutes (right side).
+  // We'll position them horizontally across the clock face, slightly above center.
+  //
+  const timeY = centerY + radius * 0.15;
+  // 
+  // Position the time display slightly below the center of the clock.
+  // radius * 0.15 means 15% of the radius down from center.
+  // This puts it in a good spot on the clock face!
+  //
+
+  const hoursX = centerX - radius * 0.25;
+  // 
+  // Position hours on the left side of the clock.
+  // centerX - radius * 0.25 means 25% of the radius to the left of center.
+  //
+
+  const minutesX = centerX + radius * 0.25;
+  // 
+  // Position minutes on the right side of the clock.
+  // centerX + radius * 0.25 means 25% of the radius to the right of center.
+  //
+
+  // 
+  // Draw the hours on the left side.
+  //
+  ctx.fillText(hoursString, hoursX, timeY);
+  // 
+  // fillText draws the hours string at the calculated position.
+  // It's like writing "14" or "05" on the left side of the clock!
+  //
+
+  // 
+  // Draw the minutes on the right side.
+  //
+  ctx.fillText(minutesString, minutesX, timeY);
+  // 
+  // fillText draws the minutes string at the calculated position.
+  // It's like writing "30" or "05" on the right side of the clock!
+  //
+
 }
 
 // 
