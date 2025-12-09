@@ -463,10 +463,10 @@ function drawClock() {
   // which represents 360 degrees in radians (a way of measuring angles).
   //
 
-  ctx.strokeStyle = '#333';
+  ctx.strokeStyle = '#fff';
   // 
   // strokeStyle sets the color of the line we're drawing.
-  // #333 is a dark gray color (remember, we're using grayscale!).
+  // #fff is white color (inverted from dark gray for the black background).
   //
 
   ctx.lineWidth = 3;
@@ -539,9 +539,9 @@ function drawClock() {
     // Like drawing a line from point (x1, y1) to point (x2, y2)!
     //
 
-    ctx.strokeStyle = '#666';
+    ctx.strokeStyle = '#999';
     // 
-    // Medium gray color for the hour markers.
+    // Light gray color for the hour markers (inverted from medium gray).
     //
 
     ctx.lineWidth = 2;
@@ -576,9 +576,9 @@ function drawClock() {
     // '20px' means 20 pixels tall. 'Arial' is the font name.
     //
 
-    ctx.fillStyle = '#000';
+    ctx.fillStyle = '#fff';
     // 
-    // Set the text color to black.
+    // Set the text color to white (inverted from black for the black background).
     //
 
     ctx.textAlign = 'center';
@@ -647,13 +647,13 @@ function drawClock() {
   // - Math.PI / 2 rotates it so 12 o'clock is at the top.
   //
 
-  drawHand(hourAngle, radius * 0.5, 6, '#000');
+  drawHand(hourAngle, radius * 0.5, 6, '#fff');
   // 
   // drawHand is a function we'll create below that draws a clock hand.
   // hourAngle is the direction to point.
   // radius * 0.5 means make it half the radius long (so it's shorter than the minute hand).
   // 6 is the thickness (6 pixels wide).
-  // '#000' is black color.
+  // '#fff' is white color (inverted from black for the black background).
   //
 
   // 
@@ -667,10 +667,10 @@ function drawClock() {
   // + seconds * 0.1 means the minute hand moves a tiny bit for each second.
   //
 
-  drawHand(minuteAngle, radius * 0.7, 4, '#333');
+  drawHand(minuteAngle, radius * 0.7, 4, '#fff');
   // 
   // Draw the minute hand. radius * 0.7 means make it 70% of the radius long.
-  // 4 pixels thick, dark gray color.
+  // 4 pixels thick, white color (inverted from dark gray for the black background).
   //
 
   // 
@@ -683,10 +683,10 @@ function drawClock() {
   // seconds * 6 means each second is 6 degrees.
   //
 
-  drawHand(secondAngle, radius * 0.8, 2, '#666');
+  drawHand(secondAngle, radius * 0.8, 2, '#fff');
   // 
   // Draw the second hand. radius * 0.8 means make it 80% of the radius long.
-  // 2 pixels thick (thin!), medium gray color.
+  // 2 pixels thick (thin!), white color (inverted from medium gray for the black background).
   //
 
   // 
@@ -703,9 +703,9 @@ function drawClock() {
   // Draw a small circle at the center, 5 pixels radius.
   //
 
-  ctx.fillStyle = '#000';
+  ctx.fillStyle = '#fff';
   // 
-  // Black color.
+  // White color (inverted from black for the black background).
   //
 
   ctx.fill();

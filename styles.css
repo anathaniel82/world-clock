@@ -44,11 +44,10 @@ body {
     it will use any "sans-serif" font (sans-serif means no little
     decorative lines on the letters).
   */
-  background-color: #f5f5f5;
+  background-color: #000;
   /* 
-    This is a very light gray color for the background.
-    In grayscale, we only use shades of gray, black, and white.
-    #f5f5f5 is like a very light gray - almost white but not quite!
+    This is black color for the background.
+    We've inverted the colors - now the background is black instead of light gray!
     The # means it's a color code (like a secret password for colors).
   */
   display: flex;
@@ -73,10 +72,10 @@ body {
     a fancy word for "the part of the screen you can see".
     So this makes sure our body is at least as tall as the screen!
   */
-  color: #333;
+  color: #fff;
   /* 
-    This is a dark gray color for text. #333 is like a charcoal gray.
-    We're using grayscale, so no bright colors - just shades of gray!
+    This is white color for text. We've inverted the colors!
+    Now the text is white so it shows up on the black background!
   */
 }
 
@@ -129,9 +128,9 @@ body {
     This makes the text bold (thicker and darker).
     Like writing with a marker instead of a pencil!
   */
-  color: #222;
+  color: #fff;
   /* 
-    A very dark gray, almost black, for the label text.
+    White color for the label text (inverted from dark gray).
     We want it to stand out so people know what the dropdown is for!
   */
 }
@@ -156,11 +155,11 @@ body {
     This makes the text 16 pixels tall. That's a comfortable
     reading size - not too big, not too small!
   */
-  border: 2px solid #666;
+  border: 2px solid #999;
   /* 
     This gives the box a border (the edge around it).
-    2px means 2 pixels thick, and #666 is a medium gray color.
-    Like drawing a gray line around the box!
+    2px means 2 pixels thick, and #999 is a light gray color (inverted).
+    Like drawing a light gray line around the box!
   */
   border-radius: 4px;
   /* 
@@ -168,14 +167,14 @@ body {
     Instead of sharp corners like a square, it has slightly
     rounded corners like a rounded square!
   */
-  background-color: #fff;
+  background-color: #222;
   /* 
-    White background for the input box.
-    This makes it stand out from the light gray page background!
+    Dark gray background for the input box (inverted from white).
+    This makes it stand out from the black page background!
   */
-  color: #000;
+  color: #fff;
   /* 
-    Black text color so you can see what you're typing!
+    White text color so you can see what you're typing (inverted from black)!
   */
 }
 
@@ -189,9 +188,9 @@ body {
     Outline is a line that browsers draw around focused elements.
     We turn it off because we want to use our own border color instead!
   */
-  border-color: #333;
+  border-color: #fff;
   /* 
-    When focused, the border becomes a darker gray (#333).
+    When focused, the border becomes white (inverted from dark gray).
     This helps users see which box they're typing in!
   */
 }
@@ -230,13 +229,13 @@ body {
     through all the cities. Like a window you can look through
     and scroll to see more!
   */
-  background-color: #fff;
+  background-color: #222;
   /* 
-    White background so the list stands out!
+    Dark gray background so the list stands out (inverted from white)!
   */
-  border: 2px solid #666;
+  border: 2px solid #999;
   /* 
-    A gray border around the list, matching the input box!
+    A light gray border around the list, matching the input box (inverted)!
   */
   border-top: none;
   /* 
@@ -274,14 +273,14 @@ body {
     turns into a pointing hand (like when you hover over a link).
     This tells users "Hey, you can click me!"
   */
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #444;
   /* 
-    A light gray line between each city option.
+    A dark gray line between each city option (inverted from light gray).
     Like lines on notebook paper that separate each row!
   */
-  color: #333;
+  color: #fff;
   /* 
-    Dark gray text color so it's easy to read!
+    White text color so it's easy to read (inverted from dark gray)!
   */
 }
 
@@ -290,10 +289,10 @@ body {
   we change the background color to show it's selectable!
 */
 .city-item:hover {
-  background-color: #e0e0e0;
+  background-color: #444;
   /* 
-    A light gray background when you hover.
-    Like highlighting something with a light gray marker!
+    A dark gray background when you hover (inverted from light gray).
+    Like highlighting something with a dark gray marker!
   */
 }
 
@@ -302,10 +301,10 @@ body {
   we make it even darker to show it's the active one!
 */
 .city-item.active {
-  background-color: #ccc;
+  background-color: #666;
   /* 
-    A medium gray background for the active/selected item.
-    Darker than hover, so you can tell which one is selected!
+    A medium gray background for the active/selected item (inverted).
+    Lighter than hover, so you can tell which one is selected!
   */
 }
 
@@ -332,9 +331,9 @@ body {
   This styles the canvas (the drawing area) where we'll draw our clock.
 */
 #clock-canvas {
-  border: 3px solid #333;
+  border: 3px solid #fff;
   /* 
-    A dark gray border around the clock, 3 pixels thick.
+    A white border around the clock, 3 pixels thick (inverted from dark gray).
     Like a picture frame around a painting!
   */
   border-radius: 50%;
@@ -342,16 +341,16 @@ body {
     border-radius: 50% makes it a perfect circle!
     Like taking a square and rounding all the corners until it's a circle!
   */
-  background-color: #fff;
+  background-color: #000;
   /* 
-    White background for the clock face.
-    Like a white piece of paper to draw on!
+    Black background for the clock face (inverted from white).
+    Like a black piece of paper to draw on!
   */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
   /* 
     This creates a shadow under the clock to make it look
     like it's floating above the page a little bit!
-    rgba(0, 0, 0, 0.2) means black color with 20% opacity (slightly see-through).
+    rgba(255, 255, 255, 0.1) means white color with 10% opacity (inverted shadow).
   */
 }
 
