@@ -483,3 +483,130 @@ body {
   */
 }
 
+/* 
+  This is a media query - it's like saying "if the screen is small (like a phone),
+  use these styles instead!" Media queries let us make our webpage look different
+  on different screen sizes!
+*/
+@media (max-width: 768px) {
+  /* 
+    @media (max-width: 768px) means "if the screen width is 768 pixels or smaller,
+    use these styles". 768 pixels is about the size of a tablet or phone in portrait mode!
+  */
+
+  /* 
+    Update the body padding for mobile devices.
+    We use less padding on mobile so the clocks have more room!
+  */
+  body {
+    padding: 10px;
+    /* 
+      Reduce padding to 10 pixels on mobile devices.
+      This gives the clocks more space on smaller screens!
+    */
+  }
+
+  /* 
+    Update the clocks grid to show 2 columns on mobile instead of 4!
+    This makes the clocks bigger and easier to see on phones!
+  */
+  .clocks-grid {
+    grid-template-columns: repeat(2, 1fr);
+    /* 
+      Change from 4 columns to 2 columns on mobile!
+      repeat(2, 1fr) means "make 2 columns, each taking up 1 fraction
+      of the available space" (so they're equal width).
+      This arranges the 8 clocks in 2 columns with 4 rows!
+    */
+    gap: 15px;
+    /* 
+      Reduce the gap between clocks to 15 pixels on mobile.
+      This saves space on smaller screens!
+    */
+    max-width: 100%;
+    /* 
+      Remove the max-width constraint on mobile so clocks can use
+      the full width of the screen!
+    */
+  }
+
+  /* 
+    Make the clock container responsive on mobile!
+  */
+  .clock-container {
+    width: 100%;
+    /* 
+      Make the container take up 100% of its grid cell's width.
+    */
+    max-width: 200px;
+    /* 
+      But don't let it get bigger than 200 pixels on mobile.
+      This ensures 2 clocks fit nicely side by side on a phone screen!
+    */
+  }
+
+  /* 
+    Make the clock canvas scale down on mobile!
+    We keep the canvas at its original 300x300 size for drawing,
+    but scale it down visually using CSS transform!
+  */
+  .clock-canvas {
+    width: 100%;
+    /* 
+      Make the canvas take up 100% of its container's width.
+    */
+    max-width: 200px;
+    /* 
+      Constrain the maximum width to 200 pixels on mobile.
+    */
+    height: auto;
+    /* 
+      height: auto maintains the aspect ratio (keeps it square).
+    */
+  }
+
+  /* 
+    Update the digital time box to match the smaller clock size on mobile!
+  */
+  .digital-time-box {
+    max-width: 200px;
+    /* 
+      Match the clock's max-width so they line up nicely!
+    */
+    font-size: 16px;
+    /* 
+      Slightly smaller font on mobile (16px instead of 20px)
+      so it fits better on smaller screens!
+    */
+    padding: 8px;
+    /* 
+      Reduce padding to 8 pixels on mobile to save space!
+    */
+  }
+
+  /* 
+    Update the city selector wrapper to match the smaller clock size!
+  */
+  .city-selector-wrapper {
+    max-width: 200px;
+    /* 
+      Match the clock's max-width so everything lines up nicely!
+    */
+  }
+
+  /* 
+    Make the city input text slightly smaller on mobile!
+  */
+  .city-input {
+    font-size: 12px;
+    /* 
+      Smaller font size (12px instead of 14px) on mobile
+      so it fits better on smaller screens!
+    */
+    padding: 6px;
+    /* 
+      Slightly less padding (6px instead of 8px) to save space!
+    */
+  }
+}
+
