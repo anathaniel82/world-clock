@@ -1426,6 +1426,12 @@ function displayCities(clockId) {
     // Give it the class 'city-item' so CSS can style it.
     //
 
+    cityItem.setAttribute('tabindex', '0');
+    // 
+    // Make the city item focusable so it can receive focus when clicked.
+    // This helps the blur event detect when a city item is clicked.
+    //
+
     // 
     // Get the GMT offset for this city's timezone.
     //
@@ -1445,10 +1451,30 @@ function displayCities(clockId) {
     // The GMT offset is in a span with class "gmt-offset".
     //
 
+    // 
+    // Use mousedown instead of click to ensure selection happens before blur event.
+    // This prevents the blur handler from restoring the previous value.
+    //
+    cityItem.addEventListener('mousedown', (e) => {
+      // 
+      // mousedown fires before blur, so we can select the city before the input loses focus.
+      //
+
+      e.preventDefault();
+      // 
+      // Prevent the default behavior to avoid losing focus on the input.
+      //
+
+      selectCity(clockId, city);
+      // 
+      // selectCity updates this specific clock to show the time in the selected city.
+      //
+
+    });
+
     cityItem.addEventListener('click', () => {
       // 
-      // addEventListener adds a "click" handler - code that runs when you click.
-      // It's like saying "When someone clicks this, do this thing!"
+      // Also handle click for keyboard navigation (Enter key) and touch devices.
       //
 
       selectCity(clockId, city);
@@ -1835,7 +1861,7 @@ for (let i = 0; i < NUM_CLOCKS; i++) {
     //
 
     // 
-    // Check if the user clicked on a city item or if the input is empty.
+    // Check if the user clicked on a city item or if the input doesn't match a valid city.
     //
     if (!relatedTarget || !cityList.contains(relatedTarget)) {
       // 
@@ -1843,9 +1869,24 @@ for (let i = 0; i < NUM_CLOCKS; i++) {
       // the user clicked away without selecting a city.
       //
 
-      if (cityInput.value.trim() === '') {
+      const currentValue = cityInput.value.trim();
+      // 
+      // Get the current value in the input box (with spaces removed).
+      //
+
+      const selectedCity = selectedCities[clockId];
+      // 
+      // Get the currently selected city for this clock.
+      //
+
+      // 
+      // Check if the current input value matches the selected city name.
+      // If it doesn't match (empty or partial text), restore the previous value.
+      //
+      if (currentValue === '' || !selectedCity || currentValue !== selectedCity.name) {
         // 
-        // If the input box is empty (or only has spaces)...
+        // If the input is empty OR there's no selected city OR the input doesn't match
+        // the selected city name (meaning it's partial text or invalid)...
         //
 
         // 
