@@ -141,6 +141,65 @@ body {
 }
 
 /* 
+  This styles the digital time display box above each clock.
+  Think of it like a digital watch display!
+*/
+.digital-time-box {
+  width: 100%;
+  /* 
+    Make it take up the full width of its container.
+  */
+  max-width: 300px;
+  /* 
+    Match the width of the clock canvas (300 pixels).
+  */
+  padding: 12px;
+  /* 
+    Add some padding inside the box so the text doesn't touch the edges.
+  */
+  background-color: #222;
+  /* 
+    Dark gray background (inverted from white) to match the input boxes.
+  */
+  border: 2px solid #fff;
+  /* 
+    White border (inverted from dark gray) to match the clock border.
+  */
+  border-radius: 4px;
+  /* 
+    Round the corners slightly to match the input box style.
+  */
+  text-align: center;
+  /* 
+    Center the text horizontally inside the box.
+  */
+  font-family: Arial, sans-serif;
+  /* 
+    Use Arial font, same as the clock numbers!
+  */
+  font-size: 20px;
+  /* 
+    20 pixels tall, same as the clock numbers!
+  */
+  font-weight: bold;
+  /* 
+    Make it bold, same as the clock numbers!
+  */
+  color: #fff;
+  /* 
+    White text color (inverted from black) so it shows up on the dark background.
+  */
+  margin-bottom: 15px;
+  /* 
+    Add some space below the box (between it and the clock).
+  */
+  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+  /* 
+    Add a subtle shadow to make it look like it's floating slightly.
+  */
+}
+
+/* 
   This styles the wrapper for each city selector dropdown.
 */
 .city-selector-wrapper {
@@ -304,6 +363,53 @@ body {
   color: #fff;
   /* 
     White text color so it's easy to read (inverted from dark gray)!
+  */
+  display: flex;
+  /* 
+    Use flexbox to arrange the city name and GMT offset side by side.
+  */
+  justify-content: space-between;
+  /* 
+    Put space between the city name and GMT offset.
+    This makes them appear on opposite sides of the item.
+  */
+  align-items: center;
+  /* 
+    Center items vertically within the city item.
+  */
+}
+
+/* 
+  This styles the city name part of each city item.
+*/
+.city-item .city-name {
+  flex: 1;
+  /* 
+    Let the city name take up the available space.
+  */
+}
+
+/* 
+  This styles the GMT offset part of each city item.
+*/
+.city-item .gmt-offset {
+  color: #999;
+  /* 
+    Light gray color for the GMT offset (slightly dimmer than the city name).
+    This makes it stand out but not compete with the city name.
+  */
+  font-size: 0.9em;
+  /* 
+    Make the GMT offset slightly smaller than the city name.
+    0.9em means 90% of the parent font size.
+  */
+  margin-left: 10px;
+  /* 
+    Add some space between the city name and GMT offset.
+  */
+  font-weight: normal;
+  /* 
+    Make the GMT offset not bold (lighter weight than the city name).
   */
 }
 

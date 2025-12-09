@@ -6,13 +6,14 @@
 */
 
 // 
-// First, let's create a big list of all the capital cities in the world!
+// First, let's create a big list of major metropolitan cities from all over the world!
 // Each city has a name and a timezone (which tells us what time it is there).
 // Think of timezones like different clocks in different parts of the world!
+// This list includes capitals AND major metropolitan cities to ensure all timezones are covered!
 //
 const capitals = [
   // 
-  // These are all the capital cities, organized by continent.
+  // These are major cities from around the world, organized by region and timezone.
   // Each one looks like: { name: "City Name", timezone: "Timezone Name" }
   // The name is what we show to users, and the timezone tells JavaScript
   // what time it is in that city!
@@ -185,17 +186,221 @@ const capitals = [
   
   // OCEANIA
   { name: "Apia, Samoa", timezone: "Pacific/Apia" },
+  { name: "Auckland, New Zealand", timezone: "Pacific/Auckland" },
+  { name: "Brisbane, Australia", timezone: "Australia/Brisbane" },
   { name: "Canberra, Australia", timezone: "Australia/Sydney" },
+  { name: "Christchurch, New Zealand", timezone: "Pacific/Auckland" },
+  { name: "Darwin, Australia", timezone: "Australia/Darwin" },
   { name: "Funafuti, Tuvalu", timezone: "Pacific/Funafuti" },
+  { name: "Hobart, Australia", timezone: "Australia/Hobart" },
+  { name: "Honolulu, Hawaii, United States", timezone: "Pacific/Honolulu" },
   { name: "Honiara, Solomon Islands", timezone: "Pacific/Guadalcanal" },
   { name: "Majuro, Marshall Islands", timezone: "Pacific/Majuro" },
+  { name: "Melbourne, Australia", timezone: "Australia/Melbourne" },
   { name: "Nuku'alofa, Tonga", timezone: "Pacific/Tongatapu" },
   { name: "Palikir, Micronesia", timezone: "Pacific/Pohnpei" },
+  { name: "Perth, Australia", timezone: "Australia/Perth" },
   { name: "Port Moresby, Papua New Guinea", timezone: "Pacific/Port_Moresby" },
   { name: "Port Vila, Vanuatu", timezone: "Pacific/Efate" },
   { name: "Suva, Fiji", timezone: "Pacific/Fiji" },
+  { name: "Sydney, Australia", timezone: "Australia/Sydney" },
   { name: "Tarawa, Kiribati", timezone: "Pacific/Tarawa" },
-  { name: "Wellington, New Zealand", timezone: "Pacific/Auckland" }
+  { name: "Wellington, New Zealand", timezone: "Pacific/Auckland" },
+  
+  // MAJOR METROPOLITAN CITIES - NORTH AMERICA
+  { name: "Anchorage, Alaska, United States", timezone: "America/Anchorage" },
+  { name: "Atlanta, Georgia, United States", timezone: "America/New_York" },
+  { name: "Boston, Massachusetts, United States", timezone: "America/New_York" },
+  { name: "Calgary, Canada", timezone: "America/Edmonton" },
+  { name: "Chicago, Illinois, United States", timezone: "America/Chicago" },
+  { name: "Dallas, Texas, United States", timezone: "America/Chicago" },
+  { name: "Denver, Colorado, United States", timezone: "America/Denver" },
+  { name: "Detroit, Michigan, United States", timezone: "America/New_York" },
+  { name: "Edmonton, Canada", timezone: "America/Edmonton" },
+  { name: "Houston, Texas, United States", timezone: "America/Chicago" },
+  { name: "Las Vegas, Nevada, United States", timezone: "America/Los_Angeles" },
+  { name: "Los Angeles, California, United States", timezone: "America/Los_Angeles" },
+  { name: "Mexico City, Mexico", timezone: "America/Mexico_City" },
+  { name: "Miami, Florida, United States", timezone: "America/New_York" },
+  { name: "Montreal, Canada", timezone: "America/Toronto" },
+  { name: "New York, New York, United States", timezone: "America/New_York" },
+  { name: "Philadelphia, Pennsylvania, United States", timezone: "America/New_York" },
+  { name: "Phoenix, Arizona, United States", timezone: "America/Phoenix" },
+  { name: "San Diego, California, United States", timezone: "America/Los_Angeles" },
+  { name: "San Francisco, California, United States", timezone: "America/Los_Angeles" },
+  { name: "Seattle, Washington, United States", timezone: "America/Los_Angeles" },
+  { name: "Toronto, Canada", timezone: "America/Toronto" },
+  { name: "Vancouver, Canada", timezone: "America/Vancouver" },
+  { name: "Washington, D.C., United States", timezone: "America/New_York" },
+  
+  // MAJOR METROPOLITAN CITIES - ASIA
+  { name: "Bangkok, Thailand", timezone: "Asia/Bangkok" },
+  { name: "Bangalore, India", timezone: "Asia/Kolkata" },
+  { name: "Beijing, China", timezone: "Asia/Shanghai" },
+  { name: "Busan, South Korea", timezone: "Asia/Seoul" },
+  { name: "Chennai, India", timezone: "Asia/Kolkata" },
+  { name: "Chongqing, China", timezone: "Asia/Shanghai" },
+  { name: "Delhi, India", timezone: "Asia/Kolkata" },
+  { name: "Dubai, United Arab Emirates", timezone: "Asia/Dubai" },
+  { name: "Guangzhou, China", timezone: "Asia/Shanghai" },
+  { name: "Hangzhou, China", timezone: "Asia/Shanghai" },
+  { name: "Ho Chi Minh City, Vietnam", timezone: "Asia/Ho_Chi_Minh" },
+  { name: "Hong Kong, China", timezone: "Asia/Hong_Kong" },
+  { name: "Hyderabad, India", timezone: "Asia/Kolkata" },
+  { name: "Jakarta, Indonesia", timezone: "Asia/Jakarta" },
+  { name: "Karachi, Pakistan", timezone: "Asia/Karachi" },
+  { name: "Kolkata, India", timezone: "Asia/Kolkata" },
+  { name: "Kuala Lumpur, Malaysia", timezone: "Asia/Kuala_Lumpur" },
+  { name: "Manila, Philippines", timezone: "Asia/Manila" },
+  { name: "Mumbai, India", timezone: "Asia/Kolkata" },
+  { name: "Nagoya, Japan", timezone: "Asia/Tokyo" },
+  { name: "Osaka, Japan", timezone: "Asia/Tokyo" },
+  { name: "Seoul, South Korea", timezone: "Asia/Seoul" },
+  { name: "Shanghai, China", timezone: "Asia/Shanghai" },
+  { name: "Shenzhen, China", timezone: "Asia/Shanghai" },
+  { name: "Singapore, Singapore", timezone: "Asia/Singapore" },
+  { name: "Taipei, Taiwan", timezone: "Asia/Taipei" },
+  { name: "Tokyo, Japan", timezone: "Asia/Tokyo" },
+  { name: "Yokohama, Japan", timezone: "Asia/Tokyo" },
+  
+  // MAJOR METROPOLITAN CITIES - EUROPE
+  { name: "Amsterdam, Netherlands", timezone: "Europe/Amsterdam" },
+  { name: "Barcelona, Spain", timezone: "Europe/Madrid" },
+  { name: "Berlin, Germany", timezone: "Europe/Berlin" },
+  { name: "Brussels, Belgium", timezone: "Europe/Brussels" },
+  { name: "Copenhagen, Denmark", timezone: "Europe/Copenhagen" },
+  { name: "Dublin, Ireland", timezone: "Europe/Dublin" },
+  { name: "Frankfurt, Germany", timezone: "Europe/Berlin" },
+  { name: "Hamburg, Germany", timezone: "Europe/Berlin" },
+  { name: "Istanbul, Turkey", timezone: "Europe/Istanbul" },
+  { name: "Lisbon, Portugal", timezone: "Europe/Lisbon" },
+  { name: "London, United Kingdom", timezone: "Europe/London" },
+  { name: "Madrid, Spain", timezone: "Europe/Madrid" },
+  { name: "Manchester, United Kingdom", timezone: "Europe/London" },
+  { name: "Milan, Italy", timezone: "Europe/Rome" },
+  { name: "Moscow, Russia", timezone: "Europe/Moscow" },
+  { name: "Munich, Germany", timezone: "Europe/Berlin" },
+  { name: "Paris, France", timezone: "Europe/Paris" },
+  { name: "Prague, Czech Republic", timezone: "Europe/Prague" },
+  { name: "Rome, Italy", timezone: "Europe/Rome" },
+  { name: "Stockholm, Sweden", timezone: "Europe/Stockholm" },
+  { name: "Vienna, Austria", timezone: "Europe/Vienna" },
+  { name: "Warsaw, Poland", timezone: "Europe/Warsaw" },
+  { name: "Zurich, Switzerland", timezone: "Europe/Zurich" },
+  
+  // MAJOR METROPOLITAN CITIES - SOUTH AMERICA
+  { name: "Bogotá, Colombia", timezone: "America/Bogota" },
+  { name: "Brasília, Brazil", timezone: "America/Sao_Paulo" },
+  { name: "Buenos Aires, Argentina", timezone: "America/Argentina/Buenos_Aires" },
+  { name: "Caracas, Venezuela", timezone: "America/Caracas" },
+  { name: "Lima, Peru", timezone: "America/Lima" },
+  { name: "Rio de Janeiro, Brazil", timezone: "America/Sao_Paulo" },
+  { name: "Santiago, Chile", timezone: "America/Santiago" },
+  { name: "São Paulo, Brazil", timezone: "America/Sao_Paulo" },
+  
+  // MAJOR METROPOLITAN CITIES - AFRICA
+  { name: "Cairo, Egypt", timezone: "Africa/Cairo" },
+  { name: "Casablanca, Morocco", timezone: "Africa/Casablanca" },
+  { name: "Johannesburg, South Africa", timezone: "Africa/Johannesburg" },
+  { name: "Lagos, Nigeria", timezone: "Africa/Lagos" },
+  { name: "Nairobi, Kenya", timezone: "Africa/Nairobi" },
+  
+  // ADDITIONAL TIMEZONES TO ENSURE COMPLETE COVERAGE
+  // Pacific Timezones
+  { name: "Anchorage, United States", timezone: "America/Anchorage" },
+  { name: "Fairbanks, Alaska, United States", timezone: "America/Anchorage" },
+  { name: "Juneau, Alaska, United States", timezone: "America/Juneau" },
+  { name: "Nome, Alaska, United States", timezone: "America/Nome" },
+  { name: "Sitka, Alaska, United States", timezone: "America/Sitka" },
+  { name: "Yakutat, Alaska, United States", timezone: "America/Yakutat" },
+  { name: "Adak, Alaska, United States", timezone: "America/Adak" },
+  
+  // Mountain Timezones
+  { name: "Albuquerque, New Mexico, United States", timezone: "America/Denver" },
+  { name: "Boise, Idaho, United States", timezone: "America/Denver" },
+  { name: "Salt Lake City, Utah, United States", timezone: "America/Denver" },
+  
+  // Central Timezones
+  { name: "Kansas City, Missouri, United States", timezone: "America/Chicago" },
+  { name: "Minneapolis, Minnesota, United States", timezone: "America/Chicago" },
+  { name: "New Orleans, Louisiana, United States", timezone: "America/Chicago" },
+  { name: "Oklahoma City, Oklahoma, United States", timezone: "America/Chicago" },
+  { name: "San Antonio, Texas, United States", timezone: "America/Chicago" },
+  { name: "St. Louis, Missouri, United States", timezone: "America/Chicago" },
+  
+  // Eastern Timezones
+  { name: "Baltimore, Maryland, United States", timezone: "America/New_York" },
+  { name: "Buffalo, New York, United States", timezone: "America/New_York" },
+  { name: "Charlotte, North Carolina, United States", timezone: "America/New_York" },
+  { name: "Cleveland, Ohio, United States", timezone: "America/New_York" },
+  { name: "Jacksonville, Florida, United States", timezone: "America/New_York" },
+  { name: "Pittsburgh, Pennsylvania, United States", timezone: "America/New_York" },
+  { name: "Tampa, Florida, United States", timezone: "America/New_York" },
+  
+  // Additional Asian Cities for Timezone Coverage
+  { name: "Almaty, Kazakhstan", timezone: "Asia/Almaty" },
+  { name: "Bishkek, Kyrgyzstan", timezone: "Asia/Bishkek" },
+  { name: "Dushanbe, Tajikistan", timezone: "Asia/Dushanbe" },
+  { name: "Tashkent, Uzbekistan", timezone: "Asia/Tashkent" },
+  { name: "Yekaterinburg, Russia", timezone: "Asia/Yekaterinburg" },
+  { name: "Novosibirsk, Russia", timezone: "Asia/Novosibirsk" },
+  { name: "Krasnoyarsk, Russia", timezone: "Asia/Krasnoyarsk" },
+  { name: "Irkutsk, Russia", timezone: "Asia/Irkutsk" },
+  { name: "Yakutsk, Russia", timezone: "Asia/Yakutsk" },
+  { name: "Vladivostok, Russia", timezone: "Asia/Vladivostok" },
+  { name: "Magadan, Russia", timezone: "Asia/Magadan" },
+  { name: "Kamchatka, Russia", timezone: "Asia/Kamchatka" },
+  
+  // Additional European Cities
+  { name: "Athens, Greece", timezone: "Europe/Athens" },
+  { name: "Bucharest, Romania", timezone: "Europe/Bucharest" },
+  { name: "Budapest, Hungary", timezone: "Europe/Budapest" },
+  { name: "Helsinki, Finland", timezone: "Europe/Helsinki" },
+  { name: "Kiev, Ukraine", timezone: "Europe/Kiev" },
+  { name: "Oslo, Norway", timezone: "Europe/Oslo" },
+  { name: "Riga, Latvia", timezone: "Europe/Riga" },
+  { name: "Sofia, Bulgaria", timezone: "Europe/Sofia" },
+  { name: "Tallinn, Estonia", timezone: "Europe/Tallinn" },
+  { name: "Vilnius, Lithuania", timezone: "Europe/Vilnius" },
+  
+  // Additional South American Cities
+  { name: "Montevideo, Uruguay", timezone: "America/Montevideo" },
+  { name: "Quito, Ecuador", timezone: "America/Guayaquil" },
+  { name: "La Paz, Bolivia", timezone: "America/La_Paz" },
+  { name: "Asunción, Paraguay", timezone: "America/Asuncion" },
+  { name: "Georgetown, Guyana", timezone: "America/Guyana" },
+  { name: "Paramaribo, Suriname", timezone: "America/Paramaribo" },
+  
+  // Additional African Cities
+  { name: "Addis Ababa, Ethiopia", timezone: "Africa/Addis_Ababa" },
+  { name: "Algiers, Algeria", timezone: "Africa/Algiers" },
+  { name: "Dar es Salaam, Tanzania", timezone: "Africa/Dar_es_Salaam" },
+  { name: "Kampala, Uganda", timezone: "Africa/Kampala" },
+  { name: "Khartoum, Sudan", timezone: "Africa/Khartoum" },
+  { name: "Luanda, Angola", timezone: "Africa/Luanda" },
+  { name: "Maputo, Mozambique", timezone: "Africa/Maputo" },
+  { name: "Tunis, Tunisia", timezone: "Africa/Tunis" },
+  
+  // Additional Middle Eastern Cities
+  { name: "Abu Dhabi, United Arab Emirates", timezone: "Asia/Dubai" },
+  { name: "Amman, Jordan", timezone: "Asia/Amman" },
+  { name: "Baghdad, Iraq", timezone: "Asia/Baghdad" },
+  { name: "Beirut, Lebanon", timezone: "Asia/Beirut" },
+  { name: "Doha, Qatar", timezone: "Asia/Qatar" },
+  { name: "Jerusalem, Israel", timezone: "Asia/Jerusalem" },
+  { name: "Kuwait City, Kuwait", timezone: "Asia/Kuwait" },
+  { name: "Muscat, Oman", timezone: "Asia/Muscat" },
+  { name: "Riyadh, Saudi Arabia", timezone: "Asia/Riyadh" },
+  { name: "Tehran, Iran", timezone: "Asia/Tehran" },
+  
+  // Additional Asian Cities
+  { name: "Colombo, Sri Lanka", timezone: "Asia/Colombo" },
+  { name: "Dhaka, Bangladesh", timezone: "Asia/Dhaka" },
+  { name: "Kathmandu, Nepal", timezone: "Asia/Kathmandu" },
+  { name: "Phnom Penh, Cambodia", timezone: "Asia/Phnom_Penh" },
+  { name: "Vientiane, Laos", timezone: "Asia/Vientiane" },
+  { name: "Yangon, Myanmar", timezone: "Asia/Yangon" },
+  { name: "Ulaanbaatar, Mongolia", timezone: "Asia/Ulaanbaatar" }
 ];
 
 // 
@@ -261,6 +466,12 @@ let selectedIndices = [];
 // selectedIndices[0] is for clock 0, etc.
 //
 
+let previousCityValues = [];
+// 
+// This stores the previous city name for each clock before the user starts typing.
+// We use this to restore the value if the user abandons the textbox without selecting.
+//
+
 for (let i = 0; i < NUM_CLOCKS; i++) {
   // 
   // Initialize arrays for each clock.
@@ -274,6 +485,11 @@ for (let i = 0; i < NUM_CLOCKS; i++) {
   selectedIndices[i] = -1;
   // 
   // Start with no city highlighted (-1 means "nothing selected").
+  //
+
+  previousCityValues[i] = '';
+  // 
+  // Start with an empty previous value for each clock.
   //
 
 }
@@ -313,6 +529,184 @@ for (let i = 0; i < NUM_CLOCKS; i++) {
   // Get the drawing context for this canvas.
   // getContext('2d') gives us a "pen and paper" to draw on this canvas!
   //
+
+}
+
+// 
+// This function gets the GMT offset for a given timezone.
+// GMT (Greenwich Mean Time) is like the "zero point" for all timezones.
+// This function tells us how many hours ahead or behind GMT a timezone is!
+//
+function getGMTOffset(timezone) {
+  // 
+  // timezone is the timezone we want to get the offset for (like "America/New_York").
+  //
+
+  // 
+  // Get the current time.
+  //
+  const now = new Date();
+  // 
+  // Get the current system time.
+  //
+
+  // 
+  // Create a formatter to get the time in UTC (GMT).
+  //
+  const utcFormatter = new Intl.DateTimeFormat('en-US', {
+    timeZone: 'UTC',
+    // 
+    // UTC is the same as GMT - it's the zero point for all timezones!
+    //
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false
+  });
+  // 
+  // This formatter will give us the UTC time.
+  //
+
+  // 
+  // Create a formatter to get the time in the target timezone.
+  //
+  const targetFormatter = new Intl.DateTimeFormat('en-US', {
+    timeZone: timezone,
+    // 
+    // This tells the formatter which timezone we want.
+    //
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false
+  });
+  // 
+  // This formatter will give us the time in the target timezone.
+  //
+
+  // 
+  // Get the UTC time as parts.
+  //
+  const utcParts = utcFormatter.formatToParts(now);
+  // 
+  // formatToParts breaks the formatted time into pieces.
+  //
+
+  const utcHour = parseInt(utcParts.find(p => p.type === 'hour').value);
+  // 
+  // Find the hour part and convert it to a number.
+  //
+
+  const utcMinute = parseInt(utcParts.find(p => p.type === 'minute').value);
+  // 
+  // Find the minute part and convert it to a number.
+  //
+
+  // 
+  // Get the target timezone time as parts.
+  //
+  const targetParts = targetFormatter.formatToParts(now);
+  // 
+  // formatToParts breaks the formatted time into pieces.
+  //
+
+  const targetHour = parseInt(targetParts.find(p => p.type === 'hour').value);
+  // 
+  // Find the hour part and convert it to a number.
+  //
+
+  const targetMinute = parseInt(targetParts.find(p => p.type === 'minute').value);
+  // 
+  // Find the minute part and convert it to a number.
+  //
+
+  // 
+  // Calculate the difference in minutes.
+  //
+  const utcTotalMinutes = utcHour * 60 + utcMinute;
+  // 
+  // Convert UTC time to total minutes (hours * 60 + minutes).
+  //
+
+  const targetTotalMinutes = targetHour * 60 + targetMinute;
+  // 
+  // Convert target time to total minutes.
+  //
+
+  let offsetMinutes = targetTotalMinutes - utcTotalMinutes;
+  // 
+  // Calculate the difference in minutes.
+  //
+
+  // 
+  // Handle the case where the time wraps around midnight.
+  // For example, if UTC is 23:00 and target is 01:00, the offset is +2 hours, not -22 hours.
+  //
+  if (offsetMinutes > 12 * 60) {
+    // 
+    // If the offset is more than 12 hours, it probably wrapped around.
+    //
+
+    offsetMinutes = offsetMinutes - 24 * 60;
+    // 
+    // Subtract 24 hours (in minutes) to get the correct offset.
+    //
+
+  } else if (offsetMinutes < -12 * 60) {
+    // 
+    // If the offset is less than -12 hours, it probably wrapped around the other way.
+    //
+
+    offsetMinutes = offsetMinutes + 24 * 60;
+    // 
+    // Add 24 hours (in minutes) to get the correct offset.
+    //
+
+  }
+
+  // 
+  // Format the offset with a + or - sign.
+  //
+  const sign = offsetMinutes >= 0 ? '+' : '-';
+  // 
+  // If offsetMinutes is positive or zero, use '+', otherwise use '-'.
+  //
+
+  const absMinutes = Math.abs(offsetMinutes);
+  // 
+  // Get the absolute value (remove the negative sign if there is one).
+  //
+
+  const hours = Math.floor(absMinutes / 60);
+  // 
+  // Get the whole number of hours (divide minutes by 60 and round down).
+  //
+
+  const minutes = absMinutes % 60;
+  // 
+  // Get the remaining minutes (the remainder after dividing by 60).
+  //
+
+  if (minutes === 0) {
+    // 
+    // If there are no minutes (it's a whole hour offset)...
+    //
+
+    return sign + hours;
+    // 
+    // Return just the hours with the sign (like "+5" or "-8").
+    //
+
+  } else {
+    // 
+    // If there are minutes (like +5:30 or -3:30)...
+    //
+
+    return sign + hours + ':' + minutes.toString().padStart(2, '0');
+    // 
+    // Return hours and minutes with the sign (like "+5:30" or "-3:30").
+    // padStart makes sure minutes always has 2 digits (so "05" instead of "5").
+    //
+
+  }
 
 }
 
@@ -777,8 +1171,8 @@ function drawClock(clockId) {
   //
 
   // 
-  // Now let's draw the military time (24-hour format) in large digital-style numerals.
-  // Hours will be on the left side, minutes on the right side of the clock face!
+  // Now let's update the digital time box above the clock with the military time (24-hour format).
+  // We'll format it as HH:MM (hours:minutes)!
   //
 
   // 
@@ -798,72 +1192,25 @@ function drawClock(clockId) {
   //
 
   // 
-  // Set up the font for digital-style numbers.
-  // We use a monospace font (where all characters are the same width) to look like a digital watch!
+  // Find the digital time box for this clock and update it.
   //
-  ctx.font = 'bold 36px "Courier New", monospace';
+  const digitalTimeBox = document.querySelector(`.digital-time-box[data-clock-id="${clockId}"]`);
   // 
-  // 'bold' makes the text thick and dark.
-  // '36px' makes it 36 pixels tall - nice and large so it's easy to read!
-  // 'Courier New' is a monospace font that looks like a digital watch display.
-  // If Courier New isn't available, it will use any monospace font.
+  // querySelector finds the digital time box with the matching clock ID.
   //
 
-  ctx.fillStyle = '#fff';
-  // 
-  // White color for the digital time display (inverted from black for the black background).
-  //
+  if (digitalTimeBox) {
+    // 
+    // If we found the digital time box...
+    //
 
-  ctx.textAlign = 'center';
-  // 
-  // Center the text horizontally.
-  //
+    digitalTimeBox.textContent = hoursString + ':' + minutesString;
+    // 
+    // Update the text content to show the time in HH:MM format.
+    // For example, "14:30" or "05:45".
+    //
 
-  ctx.textBaseline = 'middle';
-  // 
-  // Center the text vertically.
-  //
-
-  // 
-  // Calculate positions for hours (left side) and minutes (right side).
-  // We'll position them horizontally across the clock face, slightly above center.
-  //
-  const timeY = centerY + radius * 0.15;
-  // 
-  // Position the time display slightly below the center of the clock.
-  // radius * 0.15 means 15% of the radius down from center.
-  // This puts it in a good spot on the clock face!
-  //
-
-  const hoursX = centerX - radius * 0.25;
-  // 
-  // Position hours on the left side of the clock.
-  // centerX - radius * 0.25 means 25% of the radius to the left of center.
-  //
-
-  const minutesX = centerX + radius * 0.25;
-  // 
-  // Position minutes on the right side of the clock.
-  // centerX + radius * 0.25 means 25% of the radius to the right of center.
-  //
-
-  // 
-  // Draw the hours on the left side.
-  //
-  ctx.fillText(hoursString, hoursX, timeY);
-  // 
-  // fillText draws the hours string at the calculated position.
-  // It's like writing "14" or "05" on the left side of the clock!
-  //
-
-  // 
-  // Draw the minutes on the right side.
-  //
-  ctx.fillText(minutesString, minutesX, timeY);
-  // 
-  // fillText draws the minutes string at the calculated position.
-  // It's like writing "30" or "05" on the right side of the clock!
-  //
+  }
 
 }
 
@@ -1079,9 +1426,23 @@ function displayCities(clockId) {
     // Give it the class 'city-item' so CSS can style it.
     //
 
-    cityItem.textContent = city.name;
     // 
-    // Set the text to the city's name (like "London, United Kingdom").
+    // Get the GMT offset for this city's timezone.
+    //
+    const gmtOffset = getGMTOffset(city.timezone);
+    // 
+    // Call our getGMTOffset function to get the offset (like "+5" or "-8").
+    //
+
+    // 
+    // Display the city name with GMT offset.
+    //
+    cityItem.innerHTML = `<span class="city-name">${city.name}</span> <span class="gmt-offset">GMT${gmtOffset}</span>`;
+    // 
+    // Set the HTML content to show the city name and GMT offset.
+    // We use innerHTML instead of textContent so we can add HTML tags for styling.
+    // The city name is in a span with class "city-name".
+    // The GMT offset is in a span with class "gmt-offset".
     //
 
     cityItem.addEventListener('click', () => {
@@ -1129,6 +1490,12 @@ function selectCity(clockId, city) {
   cityInputs[clockId].value = city.name;
   // 
   // Update the input box for this clock to show the selected city's name.
+  //
+
+  previousCityValues[clockId] = city.name;
+  // 
+  // Update the previous city value to the newly selected city.
+  // This way if the user clicks away later, we'll restore this value.
   //
 
   const cityList = cityInputs[clockId].parentElement.querySelector('.city-list');
@@ -1401,6 +1768,23 @@ for (let i = 0; i < NUM_CLOCKS; i++) {
     // 'focus' event fires when the user clicks on or tabs to the input box.
     //
 
+    // 
+    // Store the current value before clearing it.
+    // This way we can restore it if the user abandons the textbox.
+    //
+    previousCityValues[clockId] = cityInput.value;
+    // 
+    // Save the current city name to the previousCityValues array.
+    //
+
+    // 
+    // Clear the textbox to allow the user to start typing.
+    //
+    cityInput.value = '';
+    // 
+    // Set the input box value to empty string so the user can type freely.
+    //
+
     if (filteredCitiesArrays[clockId].length === 0) {
       // 
       // If we haven't filtered yet for this clock, show all cities.
@@ -1422,6 +1806,95 @@ for (let i = 0; i < NUM_CLOCKS; i++) {
     // 
     // Show the dropdown list.
     //
+
+  });
+
+  // 
+  // When the user clicks away from the input box (loses focus), restore the previous value
+  // if they didn't select a new city.
+  //
+  cityInput.addEventListener('blur', (e) => {
+    // 
+    // 'blur' event fires when the input box loses focus (user clicks away or tabs away).
+    // e is the event object.
+    //
+
+    // 
+    // Check if the user clicked on a city item in the dropdown.
+    // If they did, we don't want to restore the value because selectCity will handle it.
+    //
+    const cityList = cityInput.parentElement.querySelector('.city-list');
+    // 
+    // Get the city list for this clock.
+    //
+
+    const relatedTarget = e.relatedTarget;
+    // 
+    // relatedTarget is the element that will receive focus next.
+    // If the user clicked on a city item, relatedTarget will be that item.
+    //
+
+    // 
+    // Check if the user clicked on a city item or if the input is empty.
+    //
+    if (!relatedTarget || !cityList.contains(relatedTarget)) {
+      // 
+      // If relatedTarget doesn't exist OR it's not inside the city list,
+      // the user clicked away without selecting a city.
+      //
+
+      if (cityInput.value.trim() === '') {
+        // 
+        // If the input box is empty (or only has spaces)...
+        //
+
+        // 
+        // Restore the previous city value.
+        //
+        if (previousCityValues[clockId] && selectedCities[clockId]) {
+          // 
+          // If we have a previous value and a selected city...
+          //
+
+          cityInput.value = previousCityValues[clockId];
+          // 
+          // Restore the previous city name to the input box.
+          //
+
+          // 
+          // Make sure the clock still shows the correct time.
+          //
+          drawClock(clockId);
+          // 
+          // Redraw the clock to ensure it shows the correct time.
+          //
+
+        }
+
+      }
+
+      // 
+      // Hide the dropdown list after a short delay.
+      // We use setTimeout to give the click event on city items time to fire first.
+      //
+      setTimeout(() => {
+        // 
+        // Wait a tiny bit (10 milliseconds) before hiding the dropdown.
+        // This ensures that if the user clicked on a city item, the click event
+        // has time to fire before we hide the dropdown.
+        //
+
+        cityList.style.display = 'none';
+        // 
+        // Hide the dropdown list.
+        //
+
+      }, 10);
+      // 
+      // 10 milliseconds is a very short delay - users won't notice it!
+      //
+
+    }
 
   });
 
@@ -1453,6 +1926,13 @@ for (let i = 0; i < NUM_CLOCKS; i++) {
     // 
     // Set the input box to show "New Delhi, India".
     // This way users can see which city is currently selected!
+    //
+
+    previousCityValues[clockId] = defaultCity.name;
+    // 
+    // Also set the previous city value to the default city.
+    // This way if the user clicks on the textbox and then clicks away,
+    // it will restore to New Delhi, India.
     //
 
   }
